@@ -1,4 +1,16 @@
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
+
+export const QUERY_DIET = gql`
+  query getDiets {
+    diets {
+      _id
+      food
+      calories
+      carbs
+      createdAt
+    }
+  }
+`;
 
 export const QUERY_USER = gql`
   query user($username: String!) {

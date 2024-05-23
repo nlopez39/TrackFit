@@ -1,0 +1,25 @@
+[
+    {
+        "food": "Cheese Burger",
+        "calories": 350,
+        "carbs": 40
+    },
+    {
+        "food": "Pepperoni Pizza",
+        "calories": 270,
+        "carbs": 30
+    },
+    
+    {
+        "food": "Yogurt",
+        "calories": 100,
+        "carbs": 10
+    },
+    
+    {
+        "food": "Oatmeal",
+        "calories": 110,
+        "carbs": 40
+    }
+    
+]
