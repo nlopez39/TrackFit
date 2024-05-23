@@ -45,3 +45,7 @@ const achiveschema = new Schema({
 
 
 })
+
+const Achievement = model('Achievement', achiveschema);
+
+module.exports = Achievement;
