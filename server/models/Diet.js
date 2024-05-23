@@ -1,34 +1,25 @@
-const { Schema, model } = require('mongoose');
-const dateFormat = require('../utils/dateFormat');
+const { Schema, model } = require("mongoose");
+const dateFormat = require("../utils/dateFormat");
 
-const dietschema = new Schema({
-  Food: {
+const dietSchema = new Schema({
+  food: {
     type: String,
-    required: 'Enter what you ate',
+    required: "Enter what you ate",
     minlength: 1,
     maxlength: 100,
     trim: true,
   },
-  Calorie: {
+  calories: {
     type: Number,
     required: true,
     trim: true,
   },
-  // Protine: {
-  //   type: Number,
-  //   required: false,
-  //   trim: true,
-  // },
-  // Carbs: {
-  //   type: Number,
-  //   required: false,
-  //   trim: true,
-  // },
-  // Sugar: {
-  //   type: Number,
-  //   required: false,
-  //   trim: true,
-  // },
+  carbs: {
+    type: Number,
+    required: true,
+    trim: true,
+  },
+
   createdAt: {
     type: Date,
     default: Date.now,
@@ -36,7 +27,6 @@ const dietschema = new Schema({
   },
 });
 
-const Diet = model('Diet', dietschema);
+const Diet = model("Diet", dietSchema);
 
 module.exports = Diet;
-
