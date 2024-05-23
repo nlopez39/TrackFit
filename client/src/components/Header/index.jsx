@@ -1,6 +1,8 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from "react-router-dom";
 
-import Auth from '../../utils/auth';
+// import { Menu } from "antd";
+
+import Auth from "../../utils/auth";
 
 const Header = () => {
   const logout = (event) => {
@@ -8,30 +10,61 @@ const Header = () => {
     Auth.logout();
   };
   return (
-    <header className="bg-primary text-light mb-4 py-3 flex-row align-center">
-      <div className="container flex-row justify-space-between-lg justify-center align-center">
-        <div>
-          <Link className="text-light" to="/">
-            <h1 className="m-0">Tech Thoughts</h1>
-          </Link>
-          <p className="m-0">Get into the mind of a programmer.</p>
-        </div>
+    <header className="bg-dark text-light mb-4 py-3">
+      <div className="d-flex justify-content-between navbar navbar-expand-lg p-4 main-navbar">
+        <nav>
+          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+            <li className="mr-3" style={{ fontSize: "16px" }}>
+              🏋️ TrackFit
+            </li>
+            <li className="nav-item mr-2">
+              <Link to="/" style={{ color: "#ABA9A9" }}>
+                Home
+              </Link>
+            </li>
+            <li className="nav-item mr-2">
+              <Link to="/workout" style={{ color: "#ABA9A9" }}>
+                Workout
+              </Link>
+            </li>
+            <li className="nav-item mr-2">
+              <Link to="/progress" style={{ color: "#ABA9A9" }}>
+                Progress
+              </Link>
+            </li>
+            <li className="nav-item mr-2">
+              <Link to="/diet" style={{ color: "#ABA9A9" }}>
+                Diet
+              </Link>
+            </li>
+            {/* <li className="nav-item mr-2">
+              <Link to="/Account" style={{ color: "#ABA9A9" }}>
+                Profile
+              </Link>
+            </li> */}
+          </ul>
+        </nav>
+
         <div>
           {Auth.loggedIn() ? (
             <>
-              <Link className="btn btn-lg btn-info m-2" to="/me">
-                {Auth.getProfile().data.username}'s profile
+              <Link className="m-2" to="/me" style={{ color: "#ABA9A9" }}>
+                My Profile
               </Link>
-              <button className="btn btn-lg btn-light m-2" onClick={logout}>
+              <button
+                className="m-2"
+                style={{ border: "none" }}
+                onClick={logout}
+              >
                 Logout
               </button>
             </>
           ) : (
             <>
-              <Link className="btn btn-lg btn-info m-2" to="/login">
+              <Link className="m-2" style={{ color: "#ABA9A9" }} to="/login">
                 Login
               </Link>
-              <Link className="btn btn-lg btn-light m-2" to="/signup">
+              <Link className="m-2" style={{ color: "#ABA9A9" }} to="/signup">
                 Signup
               </Link>
             </>
