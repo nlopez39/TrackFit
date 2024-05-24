@@ -1,16 +1,12 @@
-const models = require('../models');
-const db = require('../config/connection');
+const Diet = require("../models/Diet");
 
-module.exports = async (modelName, collectionName) => {
+module.exports = async () => {
   try {
-    let modelExists = await models[modelName].db.db.listCollections({
-      name: collectionName
-    }).toArray()
-
-    if (modelExists.length) {
-      await db.dropCollection(collectionName);
-    }
-  } catch (err) {
-    throw err;
+    // Drop the 'diets' collection
+    await Diet.collection.drop();
+    console.log("Diets collection dropped successfully.");
+  } catch (error) {
+    console.error("Error dropping diets collection:", error);
+    throw error;
   }
-}
+};

@@ -1,5 +1,5 @@
-const User = require('./User');
-const Thought = require('./Diet');
-const Workout = require('./Workout')
+const User = require("./User");
+const Diet = require("./Diet");
+const Workout = require("./Workout");
 
-module.exports = { User, Thought, Workout };
+module.exports = { User, Diet, Workout };
