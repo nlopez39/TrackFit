@@ -11,6 +11,17 @@ export const LOGIN_USER = gql`
     }
   }
 `;
+export const ADD_DIET = gql`
+  mutation addDiet($food: String!, $calories: Int!, $carbs: Int!) {
+    addDiet(food: $food, calories: $calories, carbs: $carbs) {
+      _id
+      food
+      calories
+      carbs
+      createdAt
+    }
+  }
+`;
 
 export const ADD_USER = gql`
   mutation addUser($username: String!, $email: String!, $password: String!) {
