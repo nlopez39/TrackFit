@@ -1,5 +1,5 @@
-const db = require("./connection");
-const { Diet } = require("../models");
+const db = require("../config/connection");
+const Diet = require("../models/Diet");
 const cleanDB = require("./cleanDB");
 
 db.once("open", async () => {
