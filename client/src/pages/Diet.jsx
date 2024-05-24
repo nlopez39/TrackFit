@@ -8,7 +8,6 @@ export default function Diet() {
   const diets = data?.diets || [];
   return (
     <div>
-      User's diet goes here: under development 🔨
       <DietList diets={diets} />
     </div>
   );

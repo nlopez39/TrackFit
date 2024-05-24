@@ -11,6 +11,18 @@ export const LOGIN_USER = gql`
     }
   }
 `;
+export const UPDATE_DIET = gql`
+  mutation updateDiet($id: ID!, $food: String, $calories: Int, $carbs: Int) {
+    updateDiet(_id: $id, food: $food, calories: $calories, carbs: $carbs) {
+      _id
+      food
+      calories
+      carbs
+      createdAt
+    }
+  }
+`;
+
 export const ADD_DIET = gql`
   mutation addDiet($food: String!, $calories: Int!, $carbs: Int!) {
     addDiet(food: $food, calories: $calories, carbs: $carbs) {

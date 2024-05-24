@@ -32,6 +32,7 @@ const typeDefs = `
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     addDiet(food:String!, calories:Int!, carbs: Int!): Diet
+    updateDiet(_id:ID!, food: String, calories: Int, carbs: Int):Diet
   
   }
 `;
