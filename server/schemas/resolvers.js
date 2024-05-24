@@ -63,6 +63,13 @@ const resolvers = {
       throw AuthenticationError;
       ("You need to be logged in!");
     },
+    updateDiet: async (parent, { _id, food, calories, carbs }) => {
+      return await Diet.findOneAndUpdate(
+        { _id },
+        { food, calories, carbs },
+        { new: true }
+      );
+    },
   },
 };
 
