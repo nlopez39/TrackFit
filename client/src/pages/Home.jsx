@@ -22,7 +22,7 @@ const Home = () => {
   return (
     <main className="container mt-4">
       <h1 className="text-center mb-4">
-        {Auth.loggedIn() ? `Welcome, ${username}!` : "Welcome!"}
+        {Auth.loggedIn() ? `Welcome, ${welcomeUsername}!` : "Welcome!"}
       </h1>
       <div className="row">
         <div className="col-lg-8 mb-4">
