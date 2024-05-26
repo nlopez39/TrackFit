@@ -142,7 +142,7 @@ const DietList = ({ diets }) => {
                     <div className="col">{diet.food}</div>
                     <div className="col">{diet.calories} cal</div>
                     <div className="col">{diet.carbs} g</div>
-                    <div className="col">Login to Edit</div>
+                    <div className="col">Login to View</div>
                     {/* made changes here  */}
                   </div>
                 </h4>

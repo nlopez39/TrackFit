@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 //import the list of diet items
 import DietList from "../components/DietList";
@@ -22,17 +23,91 @@ const Home = () => {
   return (
     <main className="container mt-4">
       <h1 className="text-center mb-4">
-        {Auth.loggedIn() ? `Welcome, ${welcomeUsername}!` : "Welcome!"}
+        {Auth.loggedIn()
+          ? `Welcome, ${welcomeUsername}!`
+          : "Welcome to TrackFit!"}
       </h1>
       <div className="row">
         <div className="col-lg-8 mb-4">
-          <div className="p-4 border rounded bg-light">
-            Calendar/Chart will go here
+          <div
+            id="carouselExampleIndicators"
+            className="carousel slide"
+            data-bs-ride="carousel"
+          >
+            <div className="carousel-indicators">
+              <button
+                type="button"
+                data-bs-target="#carouselExampleIndicators"
+                data-bs-slide-to="0"
+                className="active"
+                aria-current="true"
+                aria-label="Slide 1"
+              ></button>
+              <button
+                type="button"
+                data-bs-target="#carouselExampleIndicators"
+                data-bs-slide-to="1"
+                aria-label="Slide 2"
+              ></button>
+              <button
+                type="button"
+                data-bs-target="#carouselExampleIndicators"
+                data-bs-slide-to="2"
+                aria-label="Slide 3"
+              ></button>
+            </div>
+            <div className="carousel-inner">
+              <div className="carousel-item active">
+                <img
+                  src="./summerWorkoutchallenge.jpeg"
+                  className="d-block w-100"
+                  alt="Summer Workout Challenge"
+                />
+              </div>
+              <div className="carousel-item">
+                <img
+                  src="./friendWorkout.webp"
+                  className="d-block w-100"
+                  alt="Friend Workout"
+                />
+              </div>
+              <div className="carousel-item">
+                <img
+                  src="./meals.jpeg"
+                  className="d-block w-100"
+                  alt="Summer Workout Challenge"
+                />
+              </div>
+            </div>
+            <button
+              className="carousel-control-prev"
+              type="button"
+              data-bs-target="#carouselExampleIndicators"
+              data-bs-slide="prev"
+            >
+              <span
+                className="carousel-control-prev-icon"
+                aria-hidden="true"
+              ></span>
+              <span className="visually-hidden">Previous</span>
+            </button>
+            <button
+              className="carousel-control-next"
+              type="button"
+              data-bs-target="#carouselExampleIndicators"
+              data-bs-slide="next"
+            >
+              <span
+                className="carousel-control-next-icon"
+                aria-hidden="true"
+              ></span>
+              <span className="visually-hidden">Next</span>
+            </button>
           </div>
         </div>
         <div className="col-lg-4 mb-4">
           <div className="p-4 border rounded bg-light">
-            list of workouts will go to the right side
+            LIST OF WORKOUTS WILL GO HERE
           </div>
         </div>
       </div>
@@ -44,7 +119,7 @@ const Home = () => {
         </div>
         <div className="col-lg-4 mb-4">
           <div className="p-4 border rounded bg-light">
-            List of goals will go here
+            LIST OF GOALS WILL GO HERE
           </div>
         </div>
       </div>
