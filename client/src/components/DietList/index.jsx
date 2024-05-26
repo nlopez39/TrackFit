@@ -4,6 +4,8 @@ import { useMutation } from "@apollo/client";
 import { ADD_DIET, UPDATE_DIET } from "../../utils/mutations";
 import { QUERY_DIET, QUERY_ME } from "../../utils/queries";
 
+import Auth from "../../utils/auth";
+
 //create a function to handle the submit ans update the
 //TODO: create a funciton to handle adding a diet
 const DietList = ({ diets }) => {
@@ -86,65 +88,82 @@ const DietList = ({ diets }) => {
 
   return (
     <div>
-      {/* {showTitle && <h3>{title}</h3>} */}
-      <div className="row">
-        <div className="col">Food Item</div>
-        <div className="col">Calories</div>
-        <div className="col">Carbs</div>
-      </div>
-      {editMode && (
-        <div className="card mb-3">
-          <h4 className="card-header bg-dark text-light p-2 m-0">
-            <div>You are Editing {editedDiet.food}.</div>
-            <form onSubmit={handleFormSubmit}>
-              <div className="row">
-                <div className="col">
-                  <input
-                    type="text"
-                    name="food"
-                    value={editedDiet.food}
-                    onChange={handleChange}
-                  ></input>
-                </div>
-                <div className="col">
-                  <input
-                    type="text"
-                    name="calories"
-                    value={editedDiet.calories}
-                    onChange={handleChange}
-                  ></input>
-                </div>
-                <div className="col">
-                  <input
-                    type="text"
-                    name="carbs"
-                    value={editedDiet.carbs}
-                    onChange={handleChange}
-                  ></input>
-                </div>
-                <div className="col">
-                  <button type="submit">{editMode ? "Save" : "Add"}</button>
-                </div>
+      {Auth.loggedIn() ? (
+        <>
+          {editMode && (
+            <div className="card mb-3">
+              <h4 className="card-header bg-dark text-light p-2 m-0">
+                <div>You are Editing {editedDiet.food}.</div>
+                <form onSubmit={handleFormSubmit}>
+                  <div className="row">
+                    <div className="col">
+                      <input
+                        type="text"
+                        name="food"
+                        value={editedDiet.food}
+                        onChange={handleChange}
+                      ></input>
+                    </div>
+                    <div className="col">
+                      <input
+                        type="text"
+                        name="calories"
+                        value={editedDiet.calories}
+                        onChange={handleChange}
+                      ></input>
+                    </div>
+                    <div className="col">
+                      <input
+                        type="text"
+                        name="carbs"
+                        value={editedDiet.carbs}
+                        onChange={handleChange}
+                      ></input>
+                    </div>
+                    <div className="col">
+                      <button type="submit">{editMode ? "Save" : "Add"}</button>
+                    </div>
+                  </div>
+                </form>
+              </h4>
+            </div>
+          )}
+          {diets &&
+            diets.map((diet) => (
+              <div key={diet._id} className="card mb-3">
+                <h4 className="card-header bg-light text-dark p-2 m-0">
+                  <div className="row">
+                    <div className="col">{diet.food}</div>
+                    <div className="col">{diet.calories} cal</div>
+                    <div className="col">{diet.carbs} g</div>
+                    <div className="col">
+                      <button onClick={() => handleEditClick(diet)}>
+                        Edit
+                      </button>
+                    </div>
+                  </div>
+                </h4>
               </div>
-            </form>
-          </h4>
-        </div>
+            ))}
+        </>
+      ) : (
+        <>
+          {diets &&
+            diets.map((diet) => (
+              <div key={diet._id} className="card mb-3">
+                <h4 className="card-header bg-light text-dark p-2 m-0">
+                  <div className="row">
+                    <div className="col">{diet.food}</div>
+                    <div className="col">{diet.calories} cal</div>
+                    <div className="col">{diet.carbs} g</div>
+                    <div className="col">Login to Edit</div>
+                    {/* made changes here  */}
+                  </div>
+                </h4>
+              </div>
+            ))}
+        </>
       )}
-      {diets &&
-        diets.map((diet) => (
-          <div key={diet._id} className="card mb-3">
-            <h4 className="card-header bg-light text-dark p-2 m-0">
-              <div className="row">
-                <div className="col">{diet.food}</div>
-                <div className="col">{diet.calories} cal</div>
-                <div className="col">{diet.carbs} g</div>
-                <div className="col">
-                  <button onClick={() => handleEditClick(diet)}>Edit</button>
-                </div>
-              </div>
-            </h4>
-          </div>
-        ))}
     </div>
   );
 };
