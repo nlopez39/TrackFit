@@ -7,21 +7,27 @@ import { QUERY_DIET, QUERY_ME } from "../../utils/queries";
 //create a function to handle the submit ans update the
 //TODO: create a funciton to handle adding a diet
 const DietList = ({ diets }) => {
+  //create an updatedDietMutation function to use UPDATE_DIET to update an existing diet entry
   const [updatedDietMutation] = useMutation(UPDATE_DIET);
+  //This line uses the useMutation hook to create a function (addDiet) for performing the ADD_DIET mutation. It also sets up refetching of queries QUERY_DIET and QUERY_ME after the mutation completes to ensure the UI is updated with the latest data.
+  const [addDiet, { error }] = useMutation(ADD_DIET, {
+    refetchQueries: [QUERY_DIET, "getDiets", QUERY_ME, "me"],
+  });
+  //useState hook that uses editMode as a piece of state and the setEditMode as a function that will update the state
+  //a boolean indicating whether the form is in "edit mode" or "add mode."
   const [editMode, setEditMode] = useState(false);
+  //state holds the current values for the diet being edited or added, including its ID, food name, calories, and carbs.We indicate initial state in lines 21-24
   const [editedDiet, setEditedDiet] = useState({
     id: null,
     food: "",
     calories: "",
     carbs: "",
   });
-  const [addDiet, { error }] = useMutation(ADD_DIET, {
-    refetchQueries: [QUERY_DIET, "getDiets", QUERY_ME, "me"],
-  });
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     try {
+      //if we are edit mode then it calls updatedDietMutation with the current values of editedDiet to update an existing diet.
       if (editMode) {
         await updatedDietMutation({
           variables: {
@@ -32,6 +38,7 @@ const DietList = ({ diets }) => {
           },
         });
       } else {
+        //this will handle the adding of a diet
         const { data } = await addDiet({
           variables: {
             food: editedDiet.food,
@@ -40,13 +47,15 @@ const DietList = ({ diets }) => {
           },
         });
       }
-      //reset editedDiet and editmode state
+      //reset editedDiet and editmode state once the form has been submitted
+      //initial state is blank
       setEditedDiet({
         id: null,
         food: "",
         calories: "",
         carbs: "",
       });
+      //edit mode is false
       setEditMode(false);
     } catch (err) {
       console.log(err);
@@ -86,9 +95,7 @@ const DietList = ({ diets }) => {
       {editMode && (
         <div className="card mb-3">
           <h4 className="card-header bg-dark text-light p-2 m-0">
-            <div>
-              You are Editing {editedDiet.food}. Save to see the changes below
-            </div>
+            <div>You are Editing {editedDiet.food}.</div>
             <form onSubmit={handleFormSubmit}>
               <div className="row">
                 <div className="col">
@@ -126,7 +133,7 @@ const DietList = ({ diets }) => {
       {diets &&
         diets.map((diet) => (
           <div key={diet._id} className="card mb-3">
-            <h4 className="card-header bg-dark text-light p-2 m-0">
+            <h4 className="card-header bg-light text-dark p-2 m-0">
               <div className="row">
                 <div className="col">{diet.food}</div>
                 <div className="col">{diet.calories} cal</div>
