@@ -63,6 +63,15 @@ const Home = () => {
                   className="d-block w-100"
                   alt="Summer Workout Challenge"
                 />
+                <div class="carousel-caption d-none d-md-block">
+                  <h5>
+                    {Auth.loggedIn() ? (
+                      <Link to="/diet">SUMMER CHALLENGE 2024</Link>
+                    ) : (
+                      <Link to="/signup">SUMMER CHALLENGE 2024</Link>
+                    )}
+                  </h5>
+                </div>
               </div>
               <div className="carousel-item">
                 <img
@@ -70,6 +79,9 @@ const Home = () => {
                   className="d-block w-100"
                   alt="Friend Workout"
                 />
+                <div class="carousel-caption d-none d-md-block">
+                  <h5>Share workouts with Friends</h5>
+                </div>
               </div>
               <div className="carousel-item">
                 <img
@@ -77,6 +89,15 @@ const Home = () => {
                   className="d-block w-100"
                   alt="Summer Workout Challenge"
                 />
+                <div class="carousel-caption d-none d-md-block">
+                  <h5>
+                    {Auth.loggedIn() ? (
+                      <Link to="/diet">Log Your Meals</Link>
+                    ) : (
+                      <Link to="/signup">Log Your Meals</Link>
+                    )}
+                  </h5>
+                </div>
               </div>
             </div>
             <button
