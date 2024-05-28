@@ -25,12 +25,10 @@ const Home = () => {
   return (
     <main className="container mt-4">
       <h1 className="text-center mb-4">
-        {Auth.loggedIn()
-          ? `Welcome, ${welcomeUsername}!`
-          : "Welcome to TrackFit!"}
+        {Auth.loggedIn() ? `Welcome, ${username}!` : "Welcome to TrackFit!"}
       </h1>
-      <div className="row">
-        <div className="col-lg-8 mb-4">
+      <div className="row gx-5">
+        <div className="col-lg-6 mb-4">
           <div
             id="carouselExampleIndicators"
             className="carousel slide"
@@ -128,13 +126,13 @@ const Home = () => {
             </button>
           </div>
         </div>
-        <div className="col mb-4">
+        <div className="col-lg-6 mb-4">
           <div>
             <WorkoutList workouts={workouts} />
           </div>
         </div>
       </div>
-      <div className="row">
+      <div className="row gx-5">
         <div className="col-lg-8 mb-4">
           <div className="">
             <DietList diets={diets} />
