@@ -1,12 +1,13 @@
-const Diet = require("../models/Diet");
+const { Diet, Workout } = require("../models");
 
 module.exports = async () => {
   try {
     // Drop the 'diets' collection
     await Diet.collection.drop();
-    console.log("Diets collection dropped successfully.");
+    await Workout.collection.drop();
+    console.log("Diets/Workout collection dropped successfully.");
   } catch (error) {
-    console.error("Error dropping diets collection:", error);
+    console.error("Error dropping workout collection:", error);
     throw error;
   }
 };

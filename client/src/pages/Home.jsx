@@ -2,23 +2,25 @@ import { Link } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 //import the list of diet items
 import DietList from "../components/DietList";
-import { QUERY_USER } from "../utils/queries";
+import WorkoutList from "../components/WorkoutList";
 
 //TODO: Import the diet query; need to make one too
-import { QUERY_DIET } from "../utils/queries";
+import { QUERY_DIET, QUERY_WORKOUT, QUERY_USER } from "../utils/queries";
 import Auth from "../utils/auth";
 const Home = () => {
   //get username from utils function getProfile()
   const username = Auth.loggedIn() ? Auth.getProfile().data.username : null;
   const { loading: loadingDiets, data: dataDiet } = useQuery(QUERY_DIET);
+  const { loading: loadingWorkouts, data: dataWorkout } =
+    useQuery(QUERY_WORKOUT);
   const { loading: loadingUsers, data: dataUser } = useQuery(QUERY_USER, {
     //pass username as a variable to this query because its required in the query schema fro graphql
     variables: { username },
   });
 
   const diets = dataDiet?.diets || [];
+  const workouts = dataWorkout?.workouts || [];
   const welcomeUsername = dataUser?.user?.username || "";
-  console.log(dataUser);
 
   return (
     <main className="container mt-4">
@@ -63,7 +65,7 @@ const Home = () => {
                   className="d-block w-100"
                   alt="Summer Workout Challenge"
                 />
-                <div class="carousel-caption d-none d-md-block">
+                <div className="carousel-caption d-none d-md-block">
                   <h5>
                     {Auth.loggedIn() ? (
                       <Link to="/diet">SUMMER CHALLENGE 2024</Link>
@@ -79,7 +81,7 @@ const Home = () => {
                   className="d-block w-100"
                   alt="Friend Workout"
                 />
-                <div class="carousel-caption d-none d-md-block">
+                <div className="carousel-caption d-none d-md-block">
                   <h5>Share workouts with Friends</h5>
                 </div>
               </div>
@@ -89,7 +91,7 @@ const Home = () => {
                   className="d-block w-100"
                   alt="Summer Workout Challenge"
                 />
-                <div class="carousel-caption d-none d-md-block">
+                <div className="carousel-caption d-none d-md-block">
                   <h5>
                     {Auth.loggedIn() ? (
                       <Link to="/diet">Log Your Meals</Link>
@@ -126,9 +128,9 @@ const Home = () => {
             </button>
           </div>
         </div>
-        <div className="col-lg-4 mb-4">
-          <div className="p-4 border rounded bg-light">
-            LIST OF WORKOUTS WILL GO HERE
+        <div className="col mb-4">
+          <div>
+            <WorkoutList workouts={workouts} />
           </div>
         </div>
       </div>
