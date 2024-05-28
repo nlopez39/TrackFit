@@ -1,129 +1,129 @@
 [
   {
-    "BodyPart": "Chest",
-    "Exercise": "Bench Press",
+    "bodyPart": "Chest",
+    "exercise": "Bench Press",
     "workoutType": "Free Weights",
-    "Sets": 3,
-    "Reps": "6 - 10"
+    "sets": 3,
+    "reps": "6 - 10"
   },
   {
-    "BodyPart": "Chest",
-    "Exercise": "Mid Cable Flys",
+    "bodyPart": "Chest",
+    "exercise": "Mid Cable Flys",
     "workoutType": "Cables",
-    "Sets": 3,
-    "Reps": "8 - 12"
+    "sets": 3,
+    "reps": "8 - 12"
   },
   {
-    "BodyPart": "Chest",
-    "Exercise": "Low to High Cable Flys",
+    "bodyPart": "Chest",
+    "exercise": "Low to High Cable Flys",
     "workoutType": "Cables",
-    "Sets": 3,
-    "Reps": "8 - 12"
+    "sets": 3,
+    "reps": "8 - 12"
   },
   {
-    "BodyPart": "Chest",
-    "Exercise": "High to Low Cable Flys",
+    "bodyPart": "Chest",
+    "exercise": "High to Low Cable Flys",
     "workoutType": "Cables",
-    "Sets": 3,
-    "Reps": "8 - 12"
+    "sets": 3,
+    "reps": "8 - 12"
   },
   {
-    "BodyPart": "Chest",
-    "Exercise": "Dumbbell Bench Press",
+    "bodyPart": "Chest",
+    "exercise": "Dumbbell Bench Press",
     "workoutType": "Free Weights",
-    "Sets": 3,
-    "Reps": "8 - 12"
+    "sets": 3,
+    "reps": "8 - 12"
   },
   {
-    "BodyPart": "Chest",
-    "Exercise": "Incline Bench Press",
+    "bodyPart": "Chest",
+    "exercise": "Incline Bench Press",
     "workoutType": "Free Weights",
-    "Sets": 3,
-    "Reps": "8 - 12"
+    "sets": 3,
+    "reps": "8 - 12"
   },
   {
-    "BodyPart": "Chest",
-    "Exercise": "Dumbbell Incline Bench Press",
+    "bodyPart": "Chest",
+    "exercise": "Dumbbell Incline Bench Press",
     "workoutType": "Free Weights",
-    "Sets": 3,
-    "Reps": "8 - 12"
+    "sets": 3,
+    "reps": "8 - 12"
   },
   {
-    "BodyPart": "Chest",
-    "Exercise": "Push-ups",
+    "bodyPart": "Chest",
+    "exercise": "Push-ups",
     "workoutType": "At Home",
-    "Sets": 3,
-    "Reps": "12"
+    "sets": 3,
+    "reps": "12"
   },
   {
-    "BodyPart": "Chest",
-    "Exercise": "Close-Grip Push-Ups",
+    "bodyPart": "Chest",
+    "exercise": "Close-Grip Push-Ups",
     "workoutType": "At Home",
-    "Sets": 3,
-    "Reps": "10"
+    "sets": 3,
+    "reps": "10"
   },
   {
-    "BodyPart": "Back",
-    "Exercise": "Dumbbell/Barbell Rows",
+    "bodyPart": "Back",
+    "exercise": "Dumbbell/Barbell Rows",
     "workoutType": "Free Weights",
-    "Sets": 3,
-    "Reps": "8 - 12"
+    "sets": 3,
+    "reps": "8 - 12"
   },
   {
-    "BodyPart": "Back",
-    "Exercise": "Deadlift",
+    "bodyPart": "Back",
+    "exercise": "Deadlift",
     "workoutType": "Free Weights",
-    "Sets": 3,
-    "Reps": "5 - 7"
+    "sets": 3,
+    "reps": "5 - 7"
   },
   {
-    "BodyPart": "Back",
-    "Exercise": "Lat Pulldowns",
+    "bodyPart": "Back",
+    "exercise": "Lat Pulldowns",
     "workoutType": "Cables",
-    "Sets": 3,
-    "Reps": "8 - 12"
+    "sets": 3,
+    "reps": "8 - 12"
   },
   {
-    "BodyPart": "Back",
-    "Exercise": "Seated Cable Rows",
+    "bodyPart": "Back",
+    "exercise": "Seated Cable Rows",
     "workoutType": "Cables",
-    "Sets": 3,
-    "Reps": "8 - 12"
+    "sets": 3,
+    "reps": "8 - 12"
   },
   {
-    "BodyPart": "Back",
-    "Exercise": "Pull-Ups",
+    "bodyPart": "Back",
+    "exercise": "Pull-Ups",
     "workoutType": "At Home",
-    "Sets": 3,
-    "Reps": "AMAP"
+    "sets": 3,
+    "reps": "AMAP"
   },
   {
-    "BodyPart": "Legs",
-    "Exercise": "Barbell Squat",
+    "bodyPart": "Legs",
+    "exercise": "Barbell Squat",
     "workoutType": "Free Weights",
-    "Sets": 3,
-    "Reps": "8 - 12"
+    "sets": 3,
+    "reps": "8 - 12"
   },
   {
-    "BodyPart": "Legs",
-    "Exercise": "Weighted Lunges",
+    "bodyPart": "Legs",
+    "exercise": "Weighted Lunges",
     "workoutType": "Free Weights",
-    "Sets": 3,
-    "Reps": "12 - 15"
+    "sets": 3,
+    "reps": "12 - 15"
   },
   
   {
-    "BodyPart": "Legs",
-    "Exercise": "Body Weight Squat",
+    "bodyPart": "Legs",
+    "exercise": "Body Weight Squat",
     "workoutType": "At Home",
-    "Sets": 3,
-    "Reps": "15 - 20"
+    "sets": 3,
+    "reps": "15 - 20"
   },
   {
-    "BodyPart": "Arms",
-    "Exercise": "Bicep Curls",
+    "bodyPart": "Arms",
+    "exercise": "Bicep Curls",
     "workoutType": "Free Weights",
-    "Sets": 3,
-    "Reps": "15 - 20"
+    "sets": 3,
+    "reps": "15 - 20"
   }
 ]

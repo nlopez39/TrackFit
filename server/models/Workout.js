@@ -30,11 +30,6 @@ const workoutSchema = new Schema({
     required: true,
   },
 
-  weight: {
-    type: String,
-    required: false,
-  },
-
   createdAt: {
     type: Date,
     default: Date.now,

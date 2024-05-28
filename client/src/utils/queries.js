@@ -11,6 +11,18 @@ export const QUERY_DIET = gql`
     }
   }
 `;
+export const QUERY_WORKOUT = gql`
+  query getWorkouts {
+    workouts {
+      _id
+      bodyPart
+      exercise
+      workoutType
+      sets
+      reps
+    }
+  }
+`;
 
 export const QUERY_USER = gql`
   query user($username: String!) {
@@ -23,6 +35,14 @@ export const QUERY_USER = gql`
         food
         calories
         carbs
+      }
+      workouts {
+        _id
+        bodyPart
+        exercise
+        workoutType
+        sets
+        reps
       }
     }
   }
@@ -39,6 +59,14 @@ export const QUERY_ME = gql`
         food
         calories
         carbs
+      }
+      workouts {
+        _id
+        bodyPart
+        exercise
+        workoutType
+        sets
+        reps
       }
     }
   }

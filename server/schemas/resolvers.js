@@ -1,22 +1,28 @@
-const { User, Diet } = require("../models");
+const { User, Diet, Workout } = require("../models");
 const { signToken, AuthenticationError } = require("../utils/auth");
 
 const resolvers = {
   Query: {
     users: async () => {
-      return User.find().populate("diets");
+      return User.find().populate("diets").populate("workouts");
     },
     user: async (parent, { username }) => {
-      return User.findOne({ username }).populate("diets");
+      return User.findOne({ username }).populate("diets").populate("workouts");
     },
     diets: async (parent, { username }) => {
       const params = username ? { username } : {};
       return Diet.find(params).sort({ createdAt: -1 });
     },
+    workouts: async (parent, { username }) => {
+      const params = username ? { username } : {};
+      return Workout.find(params).sort({ createdAt: -1 });
+    },
 
     me: async (parent, args, context) => {
       if (context.user) {
-        return User.findOne({ _id: context.user._id }).populate("diets");
+        return User.findOne({ _id: context.user._id })
+          .populate("diets")
+          .populate("workouts");
       }
       throw AuthenticationError;
     },
@@ -69,6 +75,31 @@ const resolvers = {
         { food, calories, carbs },
         { new: true }
       );
+    },
+    //add a workout
+    addWorkout: async (
+      parent,
+      { bodyPart, exercise, workoutType, sets, reps },
+      context
+    ) => {
+      if (context.user) {
+        const workout = await Workout.create({
+          bodyPart,
+          exercise,
+          workoutType,
+          sets,
+          reps,
+        });
+
+        await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $addToSet: { workouts: workout._id } }
+        );
+
+        return workout;
+      }
+      throw AuthenticationError;
+      ("You need to be logged in!");
     },
   },
 };

@@ -34,6 +34,30 @@ export const ADD_DIET = gql`
     }
   }
 `;
+export const ADD_WORKOUT = gql`
+  mutation addWorkout(
+    $bodyPart: String!
+    $exercise: String!
+    $workoutType: String!
+    $sets: Int
+    $reps: String
+  ) {
+    addWorkout(
+      bodyPart: $bodyPart
+      exercise: $exercise
+      workoutType: $workoutType
+      sets: $sets
+      reps: $reps
+    ) {
+      _id
+      bodyPart
+      exercise
+      workoutType
+      sets
+      reps
+    }
+  }
+`;
 
 export const ADD_USER = gql`
   mutation addUser($username: String!, $email: String!, $password: String!) {

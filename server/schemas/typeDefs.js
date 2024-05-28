@@ -5,6 +5,7 @@ const typeDefs = `
     email: String
     password: String
     diets: [Diet]!
+    workouts: [Workout]!
   }
 
   type Diet {
@@ -14,6 +15,14 @@ const typeDefs = `
     carbs:Int
     createdAt: String
   
+  }
+  type Workout {
+    _id: ID
+    bodyPart: String
+    exercise: String
+    workoutType:String
+    sets:Int
+    reps:String
   }
 
   type Auth {
@@ -25,6 +34,7 @@ const typeDefs = `
     users: [User]
     user(username: String!): User
     diets(username: String): [Diet]
+    workouts(username:String):[Workout]
     me: User
   }
 
@@ -33,6 +43,7 @@ const typeDefs = `
     login(email: String!, password: String!): Auth
     addDiet(food:String!, calories:Int!, carbs: Int!): Diet
     updateDiet(_id:ID!, food: String, calories: Int, carbs: Int):Diet
+    addWorkout(bodyPart:String!, exercise:String!, workoutType:String!, sets:Int, reps:String): Workout
   
   }
 `;
