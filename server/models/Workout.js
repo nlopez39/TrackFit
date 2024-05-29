@@ -1,8 +1,6 @@
 const { Schema, model } = require("mongoose");
 const dateFormat = require("../utils/dateFormat");
 
-const workoutTypes = ["At Home", "Free Weights", "Cables", "Cardio"];
-
 const workoutSchema = new Schema({
   bodyPart: {
     type: String,
@@ -18,7 +16,6 @@ const workoutSchema = new Schema({
   workoutType: {
     type: String,
     required: true,
-    enum: workoutTypes,
   },
   sets: {
     type: Number,
@@ -26,7 +23,7 @@ const workoutSchema = new Schema({
   },
 
   reps: {
-    type: String,
+    type: Number,
     required: true,
   },
 

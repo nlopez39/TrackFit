@@ -40,7 +40,7 @@ export const ADD_WORKOUT = gql`
     $exercise: String!
     $workoutType: String!
     $sets: Int
-    $reps: String
+    $reps: Int
   ) {
     addWorkout(
       bodyPart: $bodyPart
