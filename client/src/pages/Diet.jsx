@@ -8,8 +8,6 @@ import { QUERY_DIET, QUERY_ME } from "../utils/queries";
 import Auth from "../utils/auth";
 
 export default function Diet() {
-  const { loading, data } = useQuery(QUERY_DIET);
-  const diets = data?.diets || [];
   //state that holds the current values for the diet being added, in this case they are empty initiial values
   const [inputDiet, setInputDiet] = useState({
     food: "",
@@ -59,7 +57,7 @@ export default function Diet() {
   return (
     <>
       <div>
-        <DietList diets={diets} />
+        <DietList />
         {Auth.loggedIn() ? (
           <>
             <div className="row">
