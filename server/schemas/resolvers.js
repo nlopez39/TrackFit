@@ -76,6 +76,17 @@ const resolvers = {
         { new: true }
       );
     },
+    //remove diet
+    removeDiet: async (parent, { _id }, context) => {
+      if (context.user) {
+        const diet = await Diet.findOneAndDelete({ _id });
+        await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $pull: { diets: diet._id } }
+        );
+        return diet;
+      }
+    },
     //add a workout
     addWorkout: async (
       parent,

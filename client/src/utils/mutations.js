@@ -58,6 +58,17 @@ export const ADD_WORKOUT = gql`
     }
   }
 `;
+export const REMOVE_DIET = gql`
+  mutation removeDiet($_id: ID!) {
+    removeDiet(_id: $_id) {
+      _id
+      food
+      calories
+      carbs
+      createdAt
+    }
+  }
+`;
 
 export const ADD_USER = gql`
   mutation addUser($username: String!, $email: String!, $password: String!) {
