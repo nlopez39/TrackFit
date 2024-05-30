@@ -1,14 +1,18 @@
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
-import { UPDATE_DIET } from "../../utils/mutations";
+import { UPDATE_DIET, REMOVE_DIET } from "../../utils/mutations";
+import { Link, useLocation } from "react-router-dom";
 
 import Auth from "../../utils/auth";
 
 const DietList = ({ diets }) => {
   //create an updatedDietMutation function to use UPDATE_DIET to update an existing diet entry
   const [updatedDietMutation] = useMutation(UPDATE_DIET);
-  const [showForm, setShowForm] = useState(false);
 
+  //delete diet
+  const [deleteDiet] = useMutation(REMOVE_DIET);
+  const [showForm, setShowForm] = useState(false);
+  const location = useLocation();
   //state holds the current values for the diet being edited, including its ID, food name, calories, and carbs.We indicate initial state in lines 21-24
   const [editedDiet, setEditedDiet] = useState({
     id: null,
@@ -66,6 +70,14 @@ const DietList = ({ diets }) => {
     setShowForm(true);
   };
 
+  //delete diet handler
+  const handleDeleteClick = async (_id) => {
+    try {
+      await deleteDiet({ variables: { _id } });
+    } catch (err) {
+      console.log(err);
+    }
+  };
   if (!diets.length) {
     return <h3>No Diets Yet</h3>;
   }
@@ -114,18 +126,38 @@ const DietList = ({ diets }) => {
               </h4>
             </div>
           )}
+          <div className="">
+            <h4 className="card-header">
+              <div className="row">
+                <div className="col">My Diet</div>
+                <div className="col">
+                  {location.pathname !== "/diet" && (
+                    <Link to="/diet">View All</Link>
+                  )}
+                </div>
+              </div>
+            </h4>
+          </div>
+
           {diets &&
             diets.map((diet) => (
-              <div key={diet._id} className="card mb-3">
-                <h4 className="card-header bg-light text-dark p-2 m-0">
+              <div key={diet._id} className="card">
+                <h4 className="card-header bg-light text-dark">
                   <div className="row">
                     <div className="col">{diet.food}</div>
                     <div className="col">{diet.calories} cal</div>
                     <div className="col">{diet.carbs} g</div>
                     <div className="col">
-                      <button onClick={() => handleEditClick(diet)}>
-                        Edit
-                      </button>
+                      {location.pathname !== "/" && (
+                        <>
+                          <button onClick={() => handleEditClick(diet)}>
+                            Edit
+                          </button>
+                          <button onClick={() => handleDeleteClick(diet._id)}>
+                            Delete
+                          </button>
+                        </>
+                      )}
                     </div>
                   </div>
                 </h4>
@@ -134,6 +166,16 @@ const DietList = ({ diets }) => {
         </>
       ) : (
         <>
+          <div className="">
+            <h4 className="card-header">
+              <div className="row">
+                <div className="col">Diet</div>
+                <div className="col">
+                  <Link to="/diet">View All</Link>
+                </div>
+              </div>
+            </h4>
+          </div>
           {diets &&
             diets.map((diet) => (
               <div key={diet._id} className="card mb-3">

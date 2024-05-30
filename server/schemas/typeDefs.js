@@ -22,7 +22,7 @@ const typeDefs = `
     exercise: String
     workoutType:String
     sets:Int
-    reps:String
+    reps:Int
   }
 
   type Auth {
@@ -43,7 +43,9 @@ const typeDefs = `
     login(email: String!, password: String!): Auth
     addDiet(food:String!, calories:Int!, carbs: Int!): Diet
     updateDiet(_id:ID!, food: String, calories: Int, carbs: Int):Diet
-    addWorkout(bodyPart:String!, exercise:String!, workoutType:String!, sets:Int, reps:String): Workout
+    addWorkout(bodyPart:String!, exercise:String!, workoutType:String!, sets:Int, reps:Int): Workout
+    removeDiet(_id:ID!):Diet
+    removeWorkout(_id:ID!):Workout
   
   }
 `;

@@ -40,7 +40,7 @@ export const ADD_WORKOUT = gql`
     $exercise: String!
     $workoutType: String!
     $sets: Int
-    $reps: String
+    $reps: Int
   ) {
     addWorkout(
       bodyPart: $bodyPart
@@ -55,6 +55,17 @@ export const ADD_WORKOUT = gql`
       workoutType
       sets
       reps
+    }
+  }
+`;
+export const REMOVE_DIET = gql`
+  mutation removeDiet($_id: ID!) {
+    removeDiet(_id: $_id) {
+      _id
+      food
+      calories
+      carbs
+      createdAt
     }
   }
 `;
