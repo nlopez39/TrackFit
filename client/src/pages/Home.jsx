@@ -5,12 +5,12 @@ import DietList from "../components/DietList";
 import WorkoutList from "../components/WorkoutList";
 
 //TODO: Import the diet query; need to make one too
-import { QUERY_DIET, QUERY_WORKOUT, QUERY_USER } from "../utils/queries";
+import { QUERY_WORKOUT, QUERY_USER } from "../utils/queries";
 import Auth from "../utils/auth";
 const Home = () => {
   //get username from utils function getProfile()
   const username = Auth.loggedIn() ? Auth.getProfile().data.username : null;
-  const { loading: loadingDiets, data: dataDiet } = useQuery(QUERY_DIET);
+
   const { loading: loadingWorkouts, data: dataWorkout } =
     useQuery(QUERY_WORKOUT);
   const { loading: loadingUsers, data: dataUser } = useQuery(QUERY_USER, {
@@ -18,7 +18,6 @@ const Home = () => {
     variables: { username },
   });
 
-  const diets = dataDiet?.diets || [];
   const workouts = dataWorkout?.workouts || [];
   const welcomeUsername = dataUser?.user?.username || "";
 
@@ -135,7 +134,7 @@ const Home = () => {
       <div className="row gx-5">
         <div className="col-lg-8 mb-4">
           <div className="">
-            <DietList diets={diets} />
+            <DietList />
           </div>
         </div>
         <div className="col-lg-4 mb-4">

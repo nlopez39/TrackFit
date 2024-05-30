@@ -1,17 +1,35 @@
-import React, { useState } from "react";
-import { useMutation } from "@apollo/client";
+import React, { useState, useEffect } from "react";
+import { useMutation, useQuery } from "@apollo/client";
+//useQuery is used to fetch data from the server
+import { QUERY_DIET, QUERY_ME } from "../../utils/queries";
 import { UPDATE_DIET, REMOVE_DIET } from "../../utils/mutations";
 import { Link, useLocation } from "react-router-dom";
 
 import Auth from "../../utils/auth";
 
-const DietList = ({ diets }) => {
-  //create an updatedDietMutation function to use UPDATE_DIET to update an existing diet entry
-  const [updatedDietMutation] = useMutation(UPDATE_DIET);
+const DietList = () => {
+  //this is fetching the diet data from the QUERY_DIET
+  const { loading, data, refetch } = useQuery(QUERY_DIET);
+  //set the local state; stores an array of diet objects retrieved from the DB
+  const [diets, setDiets] = useState([]);
 
   //delete diet
-  const [deleteDiet] = useMutation(REMOVE_DIET);
+  const [deleteDiet] = useMutation(REMOVE_DIET, {
+    refetchQueries: [QUERY_DIET, "getDiets", QUERY_ME, "me"],
+  });
+  // //useEffect will be used to refresh the local state "diets" when the data fetched by useQuery changes
+  // //this will run whenever the data in the [data] array changes
+  useEffect(() => {
+    if (data) {
+      setDiets(data.diets);
+    }
+  }, [data]);
+
+  //create an updatedDietMutation function to use UPDATE_DIET to update an existing diet entry
+  const [updatedDietMutation] = useMutation(UPDATE_DIET);
+  //will allow us to either show or not show the edit form
   const [showForm, setShowForm] = useState(false);
+  //tells us what page we are on so that I can remove the "View All" link
   const location = useLocation();
   //state holds the current values for the diet being edited, including its ID, food name, calories, and carbs.We indicate initial state in lines 21-24
   const [editedDiet, setEditedDiet] = useState({
@@ -73,7 +91,11 @@ const DietList = ({ diets }) => {
   //delete diet handler
   const handleDeleteClick = async (_id) => {
     try {
+      //this will send a mutation request to delete this specific item from the server
       await deleteDiet({ variables: { _id } });
+      //after its successfully deleted we want to update local state with this
+      //filter method creates a new array that excludes the deleted diet entry which is filtered by the matchng _id
+      setDiets(diets.filter((diet) => diet._id !== _id));
     } catch (err) {
       console.log(err);
     }
@@ -171,7 +193,9 @@ const DietList = ({ diets }) => {
               <div className="row">
                 <div className="col">Diet</div>
                 <div className="col">
-                  <Link to="/diet">View All</Link>
+                  {location.pathname !== "/diet" && (
+                    <Link to="/diet">View All</Link>
+                  )}
                 </div>
               </div>
             </h4>
