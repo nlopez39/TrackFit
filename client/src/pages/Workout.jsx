@@ -7,13 +7,30 @@ import WorkoutList from "../components/WorkoutList";
 import Auth from "../utils/auth";
 import { Link } from "react-router-dom";
 export default function Workout() {
-  const workoutTypes = ["At Home", "Free Weights", "Cables", "Cardio"];
-  const bodyParts = ["Chest", "Back", "Legs", "Arms"];
+  const dayOfWeek = [
+    "Choose One",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+    "Sunday",
+  ];
+  const workoutTypes = [
+    "Choose One",
+    "At Home",
+    "Free Weights",
+    "Cables",
+    "Cardio",
+  ];
+  const bodyParts = ["Choose One", "Chest", "Back", "Legs", "Arms"];
   const { loading, data } = useQuery(QUERY_WORKOUT);
 
   const workouts = data?.workouts || [];
 
   const [inputWorkout, setInputWorkout] = useState({
+    dayofWeek: "",
     bodyPart: "",
     exercise: "",
     workoutType: "",
@@ -42,6 +59,7 @@ export default function Workout() {
     try {
       const { data } = await addWorkout({
         variables: {
+          dayofWeek: inputWorkout.dayofWeek,
           bodyPart: inputWorkout.bodyPart,
           exercise: inputWorkout.exercise,
           workoutType: inputWorkout.workoutType,
@@ -51,6 +69,7 @@ export default function Workout() {
       });
       //reset inputData
       setInputWorkout({
+        dayofWeek: "",
         bodyPart: "",
         exercise: "",
         workoutType: "",
@@ -68,7 +87,7 @@ export default function Workout() {
       {Auth.loggedIn() ? (
         <>
           <h1>WORKOUT POST HERE</h1>
-          <WorkoutList workouts={workouts} />
+          <WorkoutList />
           <div>
             <button
               className="btn btn-secondary"
@@ -83,6 +102,20 @@ export default function Workout() {
                     <form onSubmit={handleFormSubmit}>
                       <div className="row">
                         <div className="col">
+                          <label>Day of the Week</label>
+                          <select
+                            name="dayofWeek"
+                            value={inputWorkout.dayofWeek}
+                            onChange={handleChange}
+                          >
+                            {dayOfWeek.map((day) => (
+                              <option key={day}>{day}</option>
+                            ))}
+                          </select>
+                        </div>
+
+                        <div className="col">
+                          <label>Body Part</label>
                           <select
                             name="bodyPart"
                             value={inputWorkout.bodyPart}
@@ -94,6 +127,7 @@ export default function Workout() {
                           </select>
                         </div>
                         <div className="col">
+                          <label>Workout Type</label>
                           <select
                             name="workoutType"
                             value={inputWorkout.workoutType}
@@ -132,6 +166,12 @@ export default function Workout() {
                         </div>
                         <div className="col">
                           <button type="submit">Save</button>
+                          <button
+                            type="cancel"
+                            onClick={() => setShowForm(false)}
+                          >
+                            Cancel
+                          </button>
                         </div>
                       </div>
                     </form>

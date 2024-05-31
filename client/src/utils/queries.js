@@ -15,6 +15,7 @@ export const QUERY_WORKOUT = gql`
   query getWorkouts {
     workouts {
       _id
+      dayofWeek
       bodyPart
       exercise
       workoutType
@@ -38,6 +39,7 @@ export const QUERY_USER = gql`
       }
       workouts {
         _id
+        dayofWeek
         bodyPart
         exercise
         workoutType
@@ -62,6 +64,7 @@ export const QUERY_ME = gql`
       }
       workouts {
         _id
+        dayofWeek
         bodyPart
         exercise
         workoutType

@@ -18,6 +18,7 @@ const typeDefs = `
   }
   type Workout {
     _id: ID
+    dayofWeek: String
     bodyPart: String
     exercise: String
     workoutType:String
@@ -43,7 +44,7 @@ const typeDefs = `
     login(email: String!, password: String!): Auth
     addDiet(food:String!, calories:Int!, carbs: Int!): Diet
     updateDiet(_id:ID!, food: String, calories: Int, carbs: Int):Diet
-    addWorkout(bodyPart:String!, exercise:String!, workoutType:String!, sets:Int, reps:Int): Workout
+    addWorkout(dayofWeek:String!,bodyPart:String!, exercise:String!, workoutType:String!, sets:Int, reps:Int): Workout
     removeDiet(_id:ID!):Diet
     removeWorkout(_id:ID!):Workout
   

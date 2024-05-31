@@ -102,6 +102,12 @@ export default function Diet() {
                           </div>
                           <div className="col">
                             <button type="submit">Save</button>
+                            <button
+                              type="cancel"
+                              onClick={() => setShowForm(false)}
+                            >
+                              Cancel
+                            </button>
                           </div>
                         </div>
                       </form>
