@@ -1,6 +1,6 @@
-import { useLocation, useNavigate } from 'react-router-dom';
+/*import { useLocation, useNavigate } from 'react-router-dom';
 
-const Footer = () => {
+/*const Footer = () => {
   const location = useLocation();
   const navigate = useNavigate();
   return (
@@ -31,4 +31,4 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+export default Footer; */
