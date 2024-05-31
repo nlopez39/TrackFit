@@ -17,14 +17,7 @@ export default function Workout() {
     "Saturday",
     "Sunday",
   ];
-  const workoutTypes = [
-    "Choose One",
-    "At Home",
-    "Free Weights",
-    "Cables",
-    "Cardio",
-  ];
-  const bodyParts = ["Choose One", "Chest", "Back", "Legs", "Arms"];
+
   const { loading, data } = useQuery(QUERY_WORKOUT);
 
   const workouts = data?.workouts || [];
@@ -33,9 +26,7 @@ export default function Workout() {
     dayofWeek: "",
     bodyPart: "",
     exercise: "",
-    workoutType: "",
-    sets: "",
-    reps: "",
+    caloriesBurned: "",
   });
   const [addWorkout, { error }] = useMutation(ADD_WORKOUT, {
     refetchQueries: [QUERY_WORKOUT, "getWorkouts", QUERY_ME, "me"],
@@ -62,9 +53,7 @@ export default function Workout() {
           dayofWeek: inputWorkout.dayofWeek,
           bodyPart: inputWorkout.bodyPart,
           exercise: inputWorkout.exercise,
-          workoutType: inputWorkout.workoutType,
-          sets: parseInt(inputWorkout.sets),
-          reps: parseInt(inputWorkout.reps),
+          caloriesBurned: parseInt(inputWorkout.caloriesBurned),
         },
       });
       //reset inputData
@@ -72,9 +61,7 @@ export default function Workout() {
         dayofWeek: "",
         bodyPart: "",
         exercise: "",
-        workoutType: "",
-        sets: "",
-        reps: "",
+        caloriesBurned: "",
       });
       setShowForm(false);
     } catch (err) {
@@ -115,30 +102,6 @@ export default function Workout() {
                         </div>
 
                         <div className="col">
-                          <label>Body Part</label>
-                          <select
-                            name="bodyPart"
-                            value={inputWorkout.bodyPart}
-                            onChange={handleChange}
-                          >
-                            {bodyParts.map((bodyPart) => (
-                              <option key={bodyPart}>{bodyPart}</option>
-                            ))}
-                          </select>
-                        </div>
-                        <div className="col">
-                          <label>Workout Type</label>
-                          <select
-                            name="workoutType"
-                            value={inputWorkout.workoutType}
-                            onChange={handleChange}
-                          >
-                            {workoutTypes.map((workoutType) => (
-                              <option key={workoutType}>{workoutType}</option>
-                            ))}
-                          </select>
-                        </div>
-                        <div className="col">
                           <label>Exercise</label>
                           <input
                             name="exercise"
@@ -147,23 +110,14 @@ export default function Workout() {
                           ></input>
                         </div>
                         <div className="col">
-                          <label>Sets</label>
+                          <label>Calories Burned</label>
                           <input
-                            type="number"
-                            name="sets"
-                            value={inputWorkout.sets}
+                            name="caloriesBurned"
+                            value={inputWorkout.caloriesBurned}
                             onChange={handleChange}
                           ></input>
                         </div>
-                        <div className="col">
-                          <label>Reps</label>
-                          <input
-                            type="number"
-                            name="reps"
-                            value={inputWorkout.reps}
-                            onChange={handleChange}
-                          ></input>
-                        </div>
+
                         <div className="col">
                           <button type="submit">Save</button>
                           <button
