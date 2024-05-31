@@ -18,9 +18,7 @@ export const QUERY_WORKOUT = gql`
       dayofWeek
       bodyPart
       exercise
-      workoutType
-      sets
-      reps
+      caloriesBurned
     }
   }
 `;
@@ -42,9 +40,7 @@ export const QUERY_USER = gql`
         dayofWeek
         bodyPart
         exercise
-        workoutType
-        sets
-        reps
+        caloriesBurned
       }
     }
   }
@@ -67,9 +63,7 @@ export const QUERY_ME = gql`
         dayofWeek
         bodyPart
         exercise
-        workoutType
-        sets
-        reps
+        caloriesBurned
       }
     }
   }

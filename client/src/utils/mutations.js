@@ -39,25 +39,19 @@ export const ADD_WORKOUT = gql`
     $dayofWeek: String!
     $bodyPart: String!
     $exercise: String!
-    $workoutType: String!
-    $sets: Int
-    $reps: Int
+    $caloriesBurned: Int!
   ) {
     addWorkout(
       dayofWeek: $dayofWeek
       bodyPart: $bodyPart
       exercise: $exercise
-      workoutType: $workoutType
-      sets: $sets
-      reps: $reps
+      caloriesBurned: $caloriesBurned
     ) {
       _id
       dayofWeek
       bodyPart
       exercise
-      workoutType
-      sets
-      reps
+      caloriesBurned
     }
   }
 `;
@@ -78,9 +72,7 @@ export const REMOVE_WORKOUT = gql`
       dayofWeek
       bodyPart
       exercise
-      workoutType
-      sets
-      reps
+      caloriesBurned
     }
   }
 `;

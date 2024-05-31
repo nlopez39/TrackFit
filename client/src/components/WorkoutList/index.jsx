@@ -50,7 +50,7 @@ const WorkoutList = () => {
                           {workout.exercise}
                         </div>
                         <div className="col" style={{ fontSize: "12px" }}>
-                          {workout.workoutType}
+                          {workout.caloriesBurned} calories
                         </div>
                       </div>
                     </h4>
@@ -77,21 +77,14 @@ const WorkoutList = () => {
                         <div className="col" style={{ fontSize: "12px" }}>
                           {workout.dayofWeek}
                         </div>
-                        <div className="col" style={{ fontSize: "12px" }}>
-                          {workout.bodyPart}
-                        </div>
+
                         <div className="col" style={{ fontSize: "12px" }}>
                           {workout.exercise}
                         </div>
                         <div className="col" style={{ fontSize: "12px" }}>
-                          {workout.workoutType}
+                          {workout.caloriesBurned} calories
                         </div>
-                        <div className="col" style={{ fontSize: "12px" }}>
-                          {workout.sets} sets
-                        </div>
-                        <div className="col" style={{ fontSize: "12px" }}>
-                          {workout.reps} reps
-                        </div>
+
                         <div className="col">
                           <button
                             onClick={() => handleDeleteClick(workout._id)}
@@ -128,8 +121,9 @@ const WorkoutList = () => {
                     <div className="col" style={{ fontSize: "12px" }}>
                       {workout.exercise}
                     </div>
+
                     <div className="col" style={{ fontSize: "12px" }}>
-                      {workout.workoutType}
+                      {workout.caloriesBurned}
                     </div>
                   </div>
                 </h4>

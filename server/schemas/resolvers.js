@@ -90,7 +90,7 @@ const resolvers = {
     //add a workout
     addWorkout: async (
       parent,
-      { dayofWeek, bodyPart, exercise, workoutType, sets, reps },
+      { dayofWeek, bodyPart, exercise, caloriesBurned },
       context
     ) => {
       if (context.user) {
@@ -98,9 +98,7 @@ const resolvers = {
           dayofWeek,
           bodyPart,
           exercise,
-          workoutType,
-          sets,
-          reps,
+          caloriesBurned,
         });
 
         await User.findOneAndUpdate(

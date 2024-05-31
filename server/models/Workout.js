@@ -18,16 +18,8 @@ const workoutSchema = new Schema({
     required: true,
     trim: true,
   },
-  workoutType: {
-    type: String,
-    required: true,
-  },
-  sets: {
-    type: Number,
-    required: true,
-  },
 
-  reps: {
+  caloriesBurned: {
     type: Number,
     required: true,
   },
