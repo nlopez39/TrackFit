@@ -36,6 +36,7 @@ db.once("open", async () => {
 
   const workouts = await Workout.insertMany([
     {
+      dayofWeek: "Monday",
       bodyPart: "Chest",
       exercise: "Bench Press",
       workoutType: "Free Weights",
@@ -43,6 +44,7 @@ db.once("open", async () => {
       reps: 8,
     },
     {
+      dayofWeek: "Tuesday",
       bodyPart: "Chest",
       exercise: "Mid Cable Flys",
       workoutType: "Cables",
@@ -50,6 +52,7 @@ db.once("open", async () => {
       reps: 9,
     },
     {
+      dayofWeek: "Wednesday",
       bodyPart: "Chest",
       exercise: "Low to High Cable Flys",
       workoutType: "Cables",
@@ -57,6 +60,7 @@ db.once("open", async () => {
       reps: 10,
     },
     {
+      dayofWeek: "Thursday",
       bodyPart: "Chest",
       exercise: "High to Low Cable Flys",
       workoutType: "Cables",
@@ -64,6 +68,7 @@ db.once("open", async () => {
       reps: 11,
     },
     {
+      dayofWeek: "Friday",
       bodyPart: "Chest",
       exercise: "Dumbbell Bench Press",
       workoutType: "Free Weights",
@@ -71,6 +76,7 @@ db.once("open", async () => {
       reps: 12,
     },
     {
+      dayofWeek: "Saturday",
       bodyPart: "Chest",
       exercise: "Incline Bench Press",
       workoutType: "Free Weights",

@@ -5,21 +5,16 @@ import DietList from "../components/DietList";
 import WorkoutList from "../components/WorkoutList";
 
 //TODO: Import the diet query; need to make one too
-import { QUERY_WORKOUT, QUERY_USER } from "../utils/queries";
+import { QUERY_USER } from "../utils/queries";
 import Auth from "../utils/auth";
 const Home = () => {
   //get username from utils function getProfile()
   const username = Auth.loggedIn() ? Auth.getProfile().data.username : null;
 
-  const { loading: loadingWorkouts, data: dataWorkout } =
-    useQuery(QUERY_WORKOUT);
-  const { loading: loadingUsers, data: dataUser } = useQuery(QUERY_USER, {
-    //pass username as a variable to this query because its required in the query schema fro graphql
-    variables: { username },
-  });
-
-  const workouts = dataWorkout?.workouts || [];
-  const welcomeUsername = dataUser?.user?.username || "";
+  // const { loading: loadingUsers, data: dataUser } = useQuery(QUERY_USER, {
+  //   //pass username as a variable to this query because its required in the query schema fro graphql
+  //   variables: { username },
+  // });
 
   return (
     <main className="container mt-4">
@@ -127,7 +122,7 @@ const Home = () => {
         </div>
         <div className="col-lg-6 mb-4">
           <div>
-            <WorkoutList workouts={workouts} />
+            <WorkoutList />
           </div>
         </div>
       </div>

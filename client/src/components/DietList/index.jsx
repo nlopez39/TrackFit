@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useMutation, useQuery } from "@apollo/client";
 //useQuery is used to fetch data from the server
 import { QUERY_DIET, QUERY_ME } from "../../utils/queries";
@@ -10,20 +10,12 @@ import Auth from "../../utils/auth";
 const DietList = () => {
   //this is fetching the diet data from the QUERY_DIET
   const { loading, data, refetch } = useQuery(QUERY_DIET);
-  //set the local state; stores an array of diet objects retrieved from the DB
-  const [diets, setDiets] = useState([]);
 
   //delete diet
   const [deleteDiet] = useMutation(REMOVE_DIET, {
+    //get the latest data after updated
     refetchQueries: [QUERY_DIET, "getDiets", QUERY_ME, "me"],
   });
-  // //useEffect will be used to refresh the local state "diets" when the data fetched by useQuery changes
-  // //this will run whenever the data in the [data] array changes
-  useEffect(() => {
-    if (data) {
-      setDiets(data.diets);
-    }
-  }, [data]);
 
   //create an updatedDietMutation function to use UPDATE_DIET to update an existing diet entry
   const [updatedDietMutation] = useMutation(UPDATE_DIET);
@@ -92,15 +84,18 @@ const DietList = () => {
   const handleDeleteClick = async (_id) => {
     try {
       //this will send a mutation request to delete this specific item from the server
-      await deleteDiet({ variables: { _id } });
+      // await deleteDiet({ variables: { _id } });
+      const { data } = await deleteDiet({ variables: { _id } });
+      // console.log(data);
+
       //after its successfully deleted we want to update local state with this
-      //filter method creates a new array that excludes the deleted diet entry which is filtered by the matchng _id
-      setDiets(diets.filter((diet) => diet._id !== _id));
+      // //filter method creates a new array that excludes the deleted diet entry which is filtered by the matchng _id
+      // setDiets(diets.filter((diet) => diet._id !== data.removeDiet._id));
     } catch (err) {
       console.log(err);
     }
   };
-  if (!diets.length) {
+  if (!data?.diets.length) {
     return <h3>No Diets Yet</h3>;
   }
 
@@ -161,30 +156,29 @@ const DietList = () => {
             </h4>
           </div>
 
-          {diets &&
-            diets.map((diet) => (
-              <div key={diet._id} className="card">
-                <h4 className="card-header bg-light text-dark">
-                  <div className="row">
-                    <div className="col">{diet.food}</div>
-                    <div className="col">{diet.calories} cal</div>
-                    <div className="col">{diet.carbs} g</div>
-                    <div className="col">
-                      {location.pathname !== "/" && (
-                        <>
-                          <button onClick={() => handleEditClick(diet)}>
-                            Edit
-                          </button>
-                          <button onClick={() => handleDeleteClick(diet._id)}>
-                            Delete
-                          </button>
-                        </>
-                      )}
-                    </div>
+          {data?.diets.map((diet) => (
+            <div key={diet._id} className="card">
+              <h4 className="card-header bg-light text-dark">
+                <div className="row">
+                  <div className="col">{diet.food}</div>
+                  <div className="col">{diet.calories} cal</div>
+                  <div className="col">{diet.carbs} g</div>
+                  <div className="col">
+                    {location.pathname !== "/" && (
+                      <>
+                        <button onClick={() => handleEditClick(diet)}>
+                          Edit
+                        </button>
+                        <button onClick={() => handleDeleteClick(diet._id)}>
+                          Delete
+                        </button>
+                      </>
+                    )}
                   </div>
-                </h4>
-              </div>
-            ))}
+                </div>
+              </h4>
+            </div>
+          ))}
         </>
       ) : (
         <>
@@ -200,8 +194,8 @@ const DietList = () => {
               </div>
             </h4>
           </div>
-          {diets &&
-            diets.map((diet) => (
+          {data?.diets &&
+            data?.diets.map((diet) => (
               <div key={diet._id} className="card mb-3">
                 <h4 className="card-header bg-light text-dark p-2 m-0">
                   <div className="row">

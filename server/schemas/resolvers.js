@@ -90,11 +90,12 @@ const resolvers = {
     //add a workout
     addWorkout: async (
       parent,
-      { bodyPart, exercise, workoutType, sets, reps },
+      { dayofWeek, bodyPart, exercise, workoutType, sets, reps },
       context
     ) => {
       if (context.user) {
         const workout = await Workout.create({
+          dayofWeek,
           bodyPart,
           exercise,
           workoutType,
@@ -111,6 +112,18 @@ const resolvers = {
       }
       throw AuthenticationError;
       ("You need to be logged in!");
+    },
+
+    //remove workout
+    removeWorkout: async (parent, { _id }, context) => {
+      if (context.user) {
+        const workout = await Workout.findOneAndDelete({ _id });
+        await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $pull: { workouts: workout._id } }
+        );
+        return workout;
+      }
     },
   },
 };

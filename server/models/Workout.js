@@ -2,6 +2,11 @@ const { Schema, model } = require("mongoose");
 const dateFormat = require("../utils/dateFormat");
 
 const workoutSchema = new Schema({
+  dayofWeek: {
+    type: String,
+    required: true,
+  },
+
   bodyPart: {
     type: String,
     required: false,

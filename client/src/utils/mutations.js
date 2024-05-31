@@ -36,6 +36,7 @@ export const ADD_DIET = gql`
 `;
 export const ADD_WORKOUT = gql`
   mutation addWorkout(
+    $dayofWeek: String!
     $bodyPart: String!
     $exercise: String!
     $workoutType: String!
@@ -43,6 +44,7 @@ export const ADD_WORKOUT = gql`
     $reps: Int
   ) {
     addWorkout(
+      dayofWeek: $dayofWeek
       bodyPart: $bodyPart
       exercise: $exercise
       workoutType: $workoutType
@@ -50,6 +52,7 @@ export const ADD_WORKOUT = gql`
       reps: $reps
     ) {
       _id
+      dayofWeek
       bodyPart
       exercise
       workoutType
@@ -65,7 +68,19 @@ export const REMOVE_DIET = gql`
       food
       calories
       carbs
-      createdAt
+    }
+  }
+`;
+export const REMOVE_WORKOUT = gql`
+  mutation removeWorkout($_id: ID!) {
+    removeWorkout(_id: $_id) {
+      _id
+      dayofWeek
+      bodyPart
+      exercise
+      workoutType
+      sets
+      reps
     }
   }
 `;
