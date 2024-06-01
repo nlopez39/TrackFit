@@ -28,11 +28,9 @@ export default function Workout() {
   //state change on calendar
   const [selectedDate, setDate] = useState(new Date());
   const today = format(selectedDate, "EEEE"); // 'EEEE' gives the full name of the day, e.g., "Monday"
-  console.log("Today is:", today); // Debugging line
+  // console.log("Today is:", today); // Debugging line
   // console.log("Workouts:", workouts); // Debugging line
-  const todayWorkouts = workouts.filter(
-    (workout) => workout.dayofWeek === today
-  );
+
   //handle selected Date
   const handleDateChange = (date) => {
     setDate(date);
@@ -94,6 +92,7 @@ export default function Workout() {
           {loading ? (
             <p>Loading workouts...</p>
           ) : (
+            // pass selectedDate as a prop so that workoutList can use it
             <WorkoutList selectedDate={selectedDate} />
           )}
           <div>
@@ -103,6 +102,7 @@ export default function Workout() {
             >
               Add a Workout
             </button>
+
             {showForm && (
               <>
                 <div className="card mb-3">
@@ -154,6 +154,10 @@ export default function Workout() {
                 </div>
               </>
             )}
+
+            <div>
+              <h4>Find a Workout</h4>
+            </div>
           </div>
         </>
       ) : (

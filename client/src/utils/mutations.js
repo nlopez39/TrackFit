@@ -34,6 +34,35 @@ export const ADD_DIET = gql`
     }
   }
 `;
+
+export const ADD_GOAL = gql`
+  mutation addGoal($goal: String!, $date: String!) {
+    addGoal(goal: $goal, date: $date) {
+      _id
+      goal
+      date
+    }
+  }
+`;
+export const UPDATE_GOAL = gql`
+  mutation updateGoal($id: ID!, $goal: String!, $date: String!) {
+    updateGoal(_id: $id, goal: $goal, date: $date) {
+      _id
+      goal
+      date
+    }
+  }
+`;
+export const REMOVE_GOAL = gql`
+  mutation removeGoal($_id: ID!) {
+    removeGoal(_id: $_id) {
+      _id
+      goal
+      date
+    }
+  }
+`;
+
 export const ADD_WORKOUT = gql`
   mutation addWorkout(
     $dayofWeek: String!

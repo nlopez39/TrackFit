@@ -3,6 +3,7 @@ import { useQuery } from "@apollo/client";
 //import the list of diet items
 import DietList from "../components/DietList";
 import WorkoutList from "../components/WorkoutList";
+import ProgressList from "../components/ProgressList";
 
 //TODO: Import the diet query; need to make one too
 import { QUERY_USER } from "../utils/queries";
@@ -133,8 +134,8 @@ const Home = () => {
           </div>
         </div>
         <div className="col-lg-4 mb-4">
-          <div className="p-4 border rounded bg-light">
-            LIST OF GOALS WILL GO HERE
+          <div className="p-4 border rounded ">
+            <ProgressList />
           </div>
         </div>
       </div>
@@ -155,7 +156,9 @@ const Home = () => {
         </div>
         <div className="col mb-4">
           <button className="btn btn-primary" style={{ background: "#5AC0DB" }}>
-            🏆 Add Goal
+            <Link to="/progress" style={{ color: "white" }}>
+              🏆 Add Goal
+            </Link>
           </button>
         </div>
       </div>

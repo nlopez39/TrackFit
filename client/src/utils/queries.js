@@ -22,6 +22,15 @@ export const QUERY_WORKOUT = gql`
     }
   }
 `;
+export const QUERY_GOAL = gql`
+  query getGoals {
+    goals {
+      _id
+      goal
+      date
+    }
+  }
+`;
 
 export const QUERY_USER = gql`
   query user($username: String!) {
@@ -41,6 +50,11 @@ export const QUERY_USER = gql`
         bodyPart
         exercise
         caloriesBurned
+      }
+      goals {
+        _id
+        goal
+        date
       }
     }
   }
@@ -64,6 +78,11 @@ export const QUERY_ME = gql`
         bodyPart
         exercise
         caloriesBurned
+      }
+      goals {
+        _id
+        goal
+        date
       }
     }
   }
