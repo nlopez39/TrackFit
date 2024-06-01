@@ -109,6 +109,7 @@ export default function Progress() {
           </>
         ) : (
           <>
+            <h2>Progress</h2>
             <Link to="/login">You need to login or signup first </Link>
           </>
         )}
