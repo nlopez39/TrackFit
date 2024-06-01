@@ -156,7 +156,44 @@ export default function Workout() {
             )}
 
             <div>
-              <h4>Find a Workout</h4>
+              <h4 className="mt-4">Summer Challenge 2024</h4>
+              <p>Complete the Summer Challenge and gain 100 Progress Points</p>
+              <div className="row">
+                <div className="col">
+                  <label>Arms</label>
+                  <a href="https://youtu.be/X6gWQ1Lcvjg?si=W_SIfU5b0Ly3_U9Z">
+                    <img src="./arms.jpg" className="d-block w-100"></img>
+                  </a>
+                </div>
+                <div className="col">
+                  <label>Core</label>
+
+                  <a href="https://youtu.be/-b2lNLq3EaA?si=gm-aOUii6VAsti3u">
+                    <img src="./core.jpg" className="d-block w-100"></img>
+                  </a>
+                </div>
+                <div className="col">
+                  <label>Glutes and Thighs</label>
+
+                  <a href="https://youtu.be/Gwf8vxZ_o3s?si=dgv80HiO9d2Y6GPP">
+                    <img src="./legs.jpg" className="d-block w-100"></img>
+                  </a>
+                </div>
+                <div className="col">
+                  <label>30 min Yoga</label>
+
+                  <a href="https://youtu.be/AB3Y-4a3ZrU?si=3eTMYPODYjqn3qXV">
+                    <img src="./yoga.jpg" className="d-block w-100"></img>
+                  </a>
+                </div>
+                <div className="col">
+                  <label>HIIT Workout</label>
+
+                  <a href="https://youtu.be/M0uO8X3_tEA?si=mcsvSrA9CRXXY5ld">
+                    <img src="./cardio.jpg" className="d-block w-100"></img>
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </>

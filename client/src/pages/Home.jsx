@@ -61,7 +61,7 @@ const Home = () => {
                 <div className="carousel-caption d-none d-md-block">
                   <h5>
                     {Auth.loggedIn() ? (
-                      <Link to="/diet">SUMMER CHALLENGE 2024</Link>
+                      <Link to="/workout">SUMMER CHALLENGE 2024</Link>
                     ) : (
                       <Link to="/signup">SUMMER CHALLENGE 2024</Link>
                     )}
