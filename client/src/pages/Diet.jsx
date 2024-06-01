@@ -1,4 +1,5 @@
 //the user's current diet goes here:
+import { Link } from "react-router-dom";
 import { useMutation, useQuery } from "@apollo/client";
 import React, { useState } from "react";
 import DietList from "../components/DietList";
@@ -57,9 +58,9 @@ export default function Diet() {
   return (
     <>
       <div>
-        <DietList />
         {Auth.loggedIn() ? (
           <>
+            <DietList />
             <div className="row">
               <div className="col">
                 <button
@@ -118,7 +119,9 @@ export default function Diet() {
             </div>
           </>
         ) : (
-          <></>
+          <>
+            <Link to="/login">You need to login or signup first </Link>
+          </>
         )}
       </div>
     </>

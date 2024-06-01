@@ -138,6 +138,27 @@ const Home = () => {
           </div>
         </div>
       </div>
+      <div className="row gx-5">
+        <div className="col mb-4 ">
+          <button className="btn btn-primary" style={{ background: "#5AC0DB" }}>
+            <Link to="/workout" style={{ color: "white" }}>
+              💪 Create a New Workout
+            </Link>
+          </button>
+        </div>
+        <div className="col mb-4">
+          <button className="btn btn-primary" style={{ background: "#5AC0DB" }}>
+            <Link to="/diet" style={{ color: "white" }}>
+              🍔 Add Meal
+            </Link>
+          </button>
+        </div>
+        <div className="col mb-4">
+          <button className="btn btn-primary" style={{ background: "#5AC0DB" }}>
+            🏆 Add Goal
+          </button>
+        </div>
+      </div>
     </main>
   );
 };
