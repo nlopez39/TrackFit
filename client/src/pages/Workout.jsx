@@ -198,7 +198,10 @@ export default function Workout() {
           </div>
         </>
       ) : (
-        <Link to="/login">You need to login or signup first </Link>
+        <>
+          <h2>Workouts</h2>
+          <Link to="/login">You need to login or signup first </Link>
+        </>
       )}
     </>
   );

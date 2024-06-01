@@ -120,6 +120,7 @@ export default function Diet() {
           </>
         ) : (
           <>
+            <h2>Diets</h2>
             <Link to="/login">You need to login or signup first </Link>
           </>
         )}
