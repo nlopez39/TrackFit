@@ -6,6 +6,9 @@ import { QUERY_WORKOUT, QUERY_ME } from "../utils/queries";
 import WorkoutList from "../components/WorkoutList";
 import Auth from "../utils/auth";
 import { Link } from "react-router-dom";
+import Calendar from "react-calendar";
+import "react-calendar/dist/Calendar.css";
+import { format } from "date-fns";
 export default function Workout() {
   const dayOfWeek = [
     "Choose One",
@@ -21,6 +24,20 @@ export default function Workout() {
   const { loading, data } = useQuery(QUERY_WORKOUT);
 
   const workouts = data?.workouts || [];
+  // Get today's date in the desired format
+  //state change on calendar
+  const [selectedDate, setDate] = useState(new Date());
+  const today = format(selectedDate, "EEEE"); // 'EEEE' gives the full name of the day, e.g., "Monday"
+  console.log("Today is:", today); // Debugging line
+  // console.log("Workouts:", workouts); // Debugging line
+  const todayWorkouts = workouts.filter(
+    (workout) => workout.dayofWeek === today
+  );
+  //handle selected Date
+  const handleDateChange = (date) => {
+    setDate(date);
+  };
+  // console.log("Today's Workouts:", todayWorkouts); // Debugging line
 
   const [inputWorkout, setInputWorkout] = useState({
     dayofWeek: "",
@@ -73,8 +90,12 @@ export default function Workout() {
     <>
       {Auth.loggedIn() ? (
         <>
-          <h1>WORKOUT POST HERE</h1>
-          <WorkoutList />
+          <Calendar onChange={handleDateChange} value={selectedDate} />
+          {loading ? (
+            <p>Loading workouts...</p>
+          ) : (
+            <WorkoutList selectedDate={selectedDate} />
+          )}
           <div>
             <button
               className="btn btn-secondary"
