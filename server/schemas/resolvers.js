@@ -1,4 +1,4 @@
-const { User, Diet, Workout } = require("../models");
+const { User, Diet, Workout, Goals } = require("../models");
 const { signToken, AuthenticationError } = require("../utils/auth");
 
 const resolvers = {
@@ -17,12 +17,17 @@ const resolvers = {
       const params = username ? { username } : {};
       return Workout.find(params).sort({ createdAt: -1 });
     },
+    goals: async (parent, { username }) => {
+      const params = username ? { username } : {};
+      return Goals.find(params).sort({ createdAt: -1 });
+    },
 
     me: async (parent, args, context) => {
       if (context.user) {
         return User.findOne({ _id: context.user._id })
           .populate("diets")
-          .populate("workouts");
+          .populate("workouts")
+          .populate("goals");
       }
       throw AuthenticationError;
     },
@@ -122,6 +127,41 @@ const resolvers = {
         );
         return workout;
       }
+    },
+    //add Goal
+    addGoal: async (parent, { goal, date }, context) => {
+      if (context.user) {
+        const goals = await Goals.create({
+          goal,
+          date,
+        });
+
+        await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $addToSet: { goals: goals._id } }
+        );
+
+        return goals;
+      }
+      throw AuthenticationError;
+      ("You need to be logged in!");
+    },
+    removeGoal: async (parent, { _id }, context) => {
+      if (context.user) {
+        const goal = await Goals.findOneAndDelete({ _id });
+        await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $pull: { goals: goal._id } }
+        );
+        return goal;
+      }
+    },
+    updateGoal: async (parent, { _id, goal, date }) => {
+      return await Goals.findOneAndUpdate(
+        { _id },
+        { goal, date },
+        { new: true }
+      );
     },
   },
 };

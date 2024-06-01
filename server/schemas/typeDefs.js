@@ -6,6 +6,7 @@ const typeDefs = `
     password: String
     diets: [Diet]!
     workouts: [Workout]!
+    goals:[Goal]!
   }
 
   type Diet {
@@ -23,6 +24,11 @@ const typeDefs = `
     exercise: String
    caloriesBurned:Int
   }
+  type Goal {
+    _id:ID
+    goal: String
+    date: String
+  }
 
   type Auth {
     token: ID!
@@ -34,16 +40,20 @@ const typeDefs = `
     user(username: String!): User
     diets(username: String): [Diet]
     workouts(username:String):[Workout]
+    goals(username:String):[Goal]
     me: User
   }
 
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
+    addGoal(goal:String!, date: String!): Goal
     login(email: String!, password: String!): Auth
     addDiet(food:String!, calories:Int!, carbs: Int!): Diet
+    updateGoal(_id:ID!, goal:String!, date:String!):Goal
     updateDiet(_id:ID!, food: String, calories: Int, carbs: Int):Diet
     addWorkout(dayofWeek:String!,bodyPart:String!, exercise:String!, caloriesBurned:Int!): Workout
     removeDiet(_id:ID!):Diet
+    removeGoal(_id:ID!):Goal
     removeWorkout(_id:ID!):Workout
   
   }
