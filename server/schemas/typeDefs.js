@@ -29,6 +29,7 @@ const typeDefs = `
     _id:ID
     goal: String
     date: String
+    completed: Boolean!
   }
 
   type Auth {
@@ -54,6 +55,7 @@ const typeDefs = `
     updateDiet(_id:ID!, food: String, calories: Int, carbs: Int):Diet
     addWorkout(dayofWeek:String!,bodyPart:String!, exercise:String!, caloriesBurned:Int!): Workout
     completeWorkout(_id:ID!):Workout
+    completeGoal(_id:ID!): Goal
     removeDiet(_id:ID!):Diet
     removeGoal(_id:ID!):Goal
     removeWorkout(_id:ID!):Workout

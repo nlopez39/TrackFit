@@ -116,6 +116,16 @@ export const COMPLETE_WORKOUT = gql`
     }
   }
 `;
+export const COMPLETE_GOAL = gql`
+  mutation completeGoal($_id: ID!) {
+    completeGoal(_id: $_id) {
+      _id
+      goal
+      date
+      completed
+    }
+  }
+`;
 
 export const ADD_USER = gql`
   mutation addUser($username: String!, $email: String!, $password: String!) {
