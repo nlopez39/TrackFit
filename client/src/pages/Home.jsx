@@ -6,11 +6,18 @@ import WorkoutList from "../components/WorkoutList";
 import ProgressList from "../components/ProgressList";
 
 //TODO: Import the diet query; need to make one too
-import { QUERY_USER } from "../utils/queries";
+import { QUERY_WORKOUT } from "../utils/queries";
 import Auth from "../utils/auth";
 const Home = () => {
   //get username from utils function getProfile()
   const username = Auth.loggedIn() ? Auth.getProfile().data.username : null;
+  const { loading, data, refetch } = useQuery(QUERY_WORKOUT);
+
+  let totalCalories = 0;
+
+  data?.workouts.forEach((workout) => {
+    totalCalories += workout.caloriesBurned;
+  });
 
   // const { loading: loadingUsers, data: dataUser } = useQuery(QUERY_USER, {
   //   //pass username as a variable to this query because its required in the query schema fro graphql
@@ -22,6 +29,14 @@ const Home = () => {
       <h1 className="text-center mb-4">
         {Auth.loggedIn() ? `Welcome, ${username}!` : "Welcome to TrackFit!"}
       </h1>
+      <div className="row card gx-5 justify-content-center">
+        <div className="col text-center">
+          <h1>
+            🔥Calories Burned🔥
+            <h2>{totalCalories}</h2>
+          </h1>
+        </div>
+      </div>
       <div className="row gx-5">
         <div className="col-lg-6 mb-4">
           <div

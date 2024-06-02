@@ -8,6 +8,8 @@ import {
   ADD_GOAL,
   COMPLETE_GOAL,
 } from "../../utils/mutations";
+
+import { format } from "date-fns";
 import { Link, useLocation } from "react-router-dom";
 
 import Auth from "../../utils/auth";
@@ -158,6 +160,7 @@ const ProgressList = () => {
     }
   };
 
+  const formattedDate = format(today, "MMMM do yyyy");
   if (!data?.goals.length) {
     return <h3>No Goals Yet</h3>;
   }
@@ -313,7 +316,9 @@ const ProgressList = () => {
                         <h4 className="card-header p-2 m-0">
                           <div className="row">
                             <div className="col">{goal.goal}</div>
-                            <div className="col">{goal.date}</div>
+                            <div className="col">
+                              Completed On {formattedDate}
+                            </div>
                           </div>
                         </h4>
                       </div>
