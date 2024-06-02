@@ -23,6 +23,10 @@ const workoutSchema = new Schema({
     type: Number,
     required: true,
   },
+  completed: {
+    type: Boolean,
+    default: false, // By default, a workout is not completed
+  },
 
   createdAt: {
     type: Date,

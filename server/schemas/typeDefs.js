@@ -23,6 +23,7 @@ const typeDefs = `
     bodyPart: String
     exercise: String
    caloriesBurned:Int
+   completed: Boolean!
   }
   type Goal {
     _id:ID
@@ -52,6 +53,7 @@ const typeDefs = `
     updateGoal(_id:ID!, goal:String!, date:String!):Goal
     updateDiet(_id:ID!, food: String, calories: Int, carbs: Int):Diet
     addWorkout(dayofWeek:String!,bodyPart:String!, exercise:String!, caloriesBurned:Int!): Workout
+    completeWorkout(_id:ID!):Workout
     removeDiet(_id:ID!):Diet
     removeGoal(_id:ID!):Goal
     removeWorkout(_id:ID!):Workout

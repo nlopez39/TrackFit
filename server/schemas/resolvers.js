@@ -128,6 +128,17 @@ const resolvers = {
         return workout;
       }
     },
+    completeWorkout: async (parent, { _id }, context) => {
+      if (context.user) {
+        const workout = await Workout.findById(_id);
+        // Update the workout to mark it as completed
+        workout.completed = true;
+        //In the context of the resolver function, when you call await workout.save(), you're saving the changes made to the workout document (such as updating the completed field) back to the MongoDB database.
+        await workout.save();
+
+        return workout; // Return the completed workout
+      }
+    },
     //add Goal
     addGoal: async (parent, { goal, date }, context) => {
       if (context.user) {
