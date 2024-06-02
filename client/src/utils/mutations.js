@@ -105,6 +105,17 @@ export const REMOVE_WORKOUT = gql`
     }
   }
 `;
+export const COMPLETE_WORKOUT = gql`
+  mutation completeWorkout($_id: ID!) {
+    completeWorkout(_id: $_id) {
+      _id
+      dayofWeek
+      bodyPart
+      exercise
+      completed
+    }
+  }
+`;
 
 export const ADD_USER = gql`
   mutation addUser($username: String!, $email: String!, $password: String!) {

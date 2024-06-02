@@ -19,6 +19,7 @@ export const QUERY_WORKOUT = gql`
       bodyPart
       exercise
       caloriesBurned
+      completed
     }
   }
 `;
@@ -50,6 +51,7 @@ export const QUERY_USER = gql`
         bodyPart
         exercise
         caloriesBurned
+        completed
       }
       goals {
         _id
@@ -78,6 +80,7 @@ export const QUERY_ME = gql`
         bodyPart
         exercise
         caloriesBurned
+        completed
       }
       goals {
         _id
