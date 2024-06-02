@@ -104,7 +104,7 @@ const WorkoutList = ({ selectedDate }) => {
       console.error(err);
     }
   };
-
+  const formatToday = format(new Date(), "MMMM do yyyy");
   if (!data?.workouts.length) {
     return <h3>No Workouts Yet</h3>;
   }
@@ -262,6 +262,9 @@ const WorkoutList = ({ selectedDate }) => {
                             </div>
                             <div className="col" style={{ fontSize: "12px" }}>
                               {workout.caloriesBurned} calories
+                            </div>
+                            <div className="col" style={{ fontSize: "12px" }}>
+                              Completed On {formatToday}
                             </div>
                           </div>
                         </h4>
