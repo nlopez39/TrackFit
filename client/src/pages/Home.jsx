@@ -29,14 +29,16 @@ const Home = () => {
       <h1 className="text-center mb-4">
         {Auth.loggedIn() ? `Welcome, ${username}!` : "Welcome to TrackFit!"}
       </h1>
-      <div className="row card gx-5 justify-content-center">
-        <div className="col text-center">
-          <h1>
-            🔥Calories Burned🔥
-            <h2>{totalCalories}</h2>
-          </h1>
+      {Auth.loggedIn() ? (
+        <div className="row card gx-5 justify-content-center">
+          <div className="col text-center">
+            <h1>
+              🔥Calories Burned🔥
+              <h2>{totalCalories}</h2>
+            </h1>
+          </div>
         </div>
-      </div>
+      ) : null}
       <div className="row gx-5">
         <div className="col-lg-6 mb-4">
           <div
