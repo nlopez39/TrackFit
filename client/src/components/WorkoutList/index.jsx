@@ -329,24 +329,27 @@ const WorkoutList = ({ selectedDate }) => {
           </div>
 
           {data?.workouts &&
-            data?.workouts.slice(0, 5).map((workout) => (
-              <div key={workout._id} className="card mb-3">
-                <h4 className="card-header bg-light text-dark p-2 m-0">
-                  <div className="row">
-                    <div className="col" style={{ fontSize: "12px" }}>
-                      {workout.dayofWeek}
-                    </div>
-                    <div className="col" style={{ fontSize: "12px" }}>
-                      {workout.exercise}
-                    </div>
+            data?.workouts
+              .slice(0, 5)
+              .filter((workout) => !workout.completed)
+              .map((workout) => (
+                <div key={workout._id} className="card mb-3">
+                  <h4 className="card-header bg-light text-dark p-2 m-0">
+                    <div className="row">
+                      <div className="col" style={{ fontSize: "12px" }}>
+                        {workout.dayofWeek}
+                      </div>
+                      <div className="col" style={{ fontSize: "12px" }}>
+                        {workout.exercise}
+                      </div>
 
-                    <div className="col" style={{ fontSize: "12px" }}>
-                      {workout.caloriesBurned}
+                      <div className="col" style={{ fontSize: "12px" }}>
+                        {workout.caloriesBurned}
+                      </div>
                     </div>
-                  </div>
-                </h4>
-              </div>
-            ))}
+                  </h4>
+                </div>
+              ))}
         </>
       )}
     </>

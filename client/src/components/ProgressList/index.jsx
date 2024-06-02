@@ -343,18 +343,20 @@ const ProgressList = () => {
             </h4>
           </div>
           {data?.goals &&
-            data?.goals.map((goal) => (
-              <div key={goal._id} className="card mb-3">
-                <h4 className="card-header bg-light text-dark p-2 m-0">
-                  <div className="row">
-                    <div className="col">{goal.goal}</div>
+            data?.goals
+              .filter((goal) => !goal.completed)
+              .map((goal) => (
+                <div key={goal._id} className="card mb-3">
+                  <h4 className="card-header bg-light text-dark p-2 m-0">
+                    <div className="row">
+                      <div className="col">{goal.goal}</div>
 
-                    <div className="col">Login to View</div>
-                    {/* made changes here  */}
-                  </div>
-                </h4>
-              </div>
-            ))}
+                      <div className="col">Login to View</div>
+                      {/* made changes here  */}
+                    </div>
+                  </h4>
+                </div>
+              ))}
         </>
       )}
     </div>
