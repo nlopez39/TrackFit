@@ -29,6 +29,7 @@ export const QUERY_GOAL = gql`
       _id
       goal
       date
+      completed
     }
   }
 `;
@@ -57,6 +58,7 @@ export const QUERY_USER = gql`
         _id
         goal
         date
+        completed
       }
     }
   }
@@ -86,6 +88,7 @@ export const QUERY_ME = gql`
         _id
         goal
         date
+        completed
       }
     }
   }

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useMutation, useQuery } from "@apollo/client";
 //useQuery is used to fetch data from the server
 import { QUERY_DIET, QUERY_ME } from "../../utils/queries";
-import { UPDATE_DIET, REMOVE_DIET } from "../../utils/mutations";
+import { UPDATE_DIET, REMOVE_DIET, ADD_DIET } from "../../utils/mutations";
 import { Link, useLocation } from "react-router-dom";
 
 import Auth from "../../utils/auth";
@@ -19,8 +19,8 @@ const DietList = () => {
 
   //create an updatedDietMutation function to use UPDATE_DIET to update an existing diet entry
   const [updatedDietMutation] = useMutation(UPDATE_DIET);
-  //will allow us to either show or not show the edit form
-  const [showForm, setShowForm] = useState(false);
+  //will allow us to edit by list item
+  const [editingDietId, setEditingDietId] = useState(null);
   //tells us what page we are on so that I can remove the "View All" link
   const location = useLocation();
   //state holds the current values for the diet being edited, including its ID, food name, calories, and carbs.We indicate initial state in lines 21-24
@@ -53,9 +53,8 @@ const DietList = () => {
         calories: "",
         carbs: "",
       });
+      setEditingDietId(null);
       // do not show form
-
-      setShowForm(false);
     } catch (err) {
       console.log(err);
     }
@@ -76,8 +75,8 @@ const DietList = () => {
       calories: diet.calories,
       carbs: diet.carbs,
     });
-    //show the form
-    setShowForm(true);
+    //set the id of the current item
+    setEditingDietId(diet._id);
   };
 
   //delete diet handler
@@ -95,6 +94,52 @@ const DietList = () => {
       console.log(err);
     }
   };
+  //adding a diet function :
+  //state that holds the current values for the diet being added, in this case they are empty initiial values
+  const [inputDiet, setInputDiet] = useState({
+    food: "",
+    calories: "",
+    carbs: " ",
+  });
+  //with the use of state you can either show the form or not
+  const [showAddForm, setShowAddForm] = useState(false);
+  //This line uses the useMutation hook to create a function (addDiet) for performing the ADD_DIET mutation. It also sets up refetching of queries QUERY_DIET and QUERY_ME after the mutation completes to ensure the UI is updated with the latest data.
+  const [addDiet, { error }] = useMutation(ADD_DIET, {
+    refetchQueries: [QUERY_DIET, "getDiets", QUERY_ME, "me"],
+  });
+
+  const handleFormSubmitAdd = async (event) => {
+    event.preventDefault();
+
+    try {
+      const { data } = await addDiet({
+        variables: {
+          food: inputDiet.food,
+          calories: parseInt(inputDiet.calories),
+          carbs: parseInt(inputDiet.carbs),
+          // thoughtAuthor: Auth.getProfile().data.username,
+        },
+      });
+
+      setInputDiet({
+        food: "",
+        calories: "",
+        carbs: "",
+      });
+      setShowAddForm(false);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const handleChangeAdd = (event) => {
+    const { name, value } = event.target;
+
+    setInputDiet({
+      ...inputDiet,
+      [name]: value,
+    });
+  };
   if (!data?.diets.length) {
     return <h3>No Diets Yet</h3>;
   }
@@ -103,46 +148,6 @@ const DietList = () => {
     <div>
       {Auth.loggedIn() ? (
         <>
-          {showForm && (
-            <div className="card mb-3">
-              <h4 className="card-header bg-light text-dark p-2 m-0">
-                <form onSubmit={handleFormSubmit}>
-                  <div className="row">
-                    <div className="col">
-                      <label>Food</label>
-                      <input
-                        type="text"
-                        name="food"
-                        value={editedDiet.food}
-                        onChange={handleChange}
-                      ></input>
-                    </div>
-                    <div className="col">
-                      <label>Calories</label>
-                      <input
-                        type="number"
-                        name="calories"
-                        value={editedDiet.calories}
-                        onChange={handleChange}
-                      ></input>
-                    </div>
-                    <div className="col">
-                      <label>Carbs</label>
-                      <input
-                        type="number"
-                        name="carbs"
-                        value={editedDiet.carbs}
-                        onChange={handleChange}
-                      ></input>
-                    </div>
-                    <div className="col">
-                      <button type="submit">Save</button>
-                    </div>
-                  </div>
-                </form>
-              </h4>
-            </div>
-          )}
           <div className="">
             <h4 className="card-header">
               <div className="row">
@@ -157,28 +162,126 @@ const DietList = () => {
           </div>
 
           {data?.diets.map((diet) => (
-            <div key={diet._id} className="card">
+            <div key={diet._id} className="card mb-3">
               <h4 className="card-header bg-light text-dark">
                 <div className="row">
-                  <div className="col">{diet.food}</div>
-                  <div className="col">{diet.calories} cal</div>
-                  <div className="col">{diet.carbs} g</div>
-                  <div className="col">
-                    {location.pathname !== "/" && (
-                      <>
-                        <button onClick={() => handleEditClick(diet)}>
-                          Edit
+                  {editingDietId === diet._id ? (
+                    <form onSubmit={handleFormSubmit}>
+                      <div className="col">
+                        <input
+                          type="text"
+                          name="food"
+                          value={editedDiet.food}
+                          onChange={handleChange}
+                        />
+                      </div>
+                      <div className="col">
+                        <input
+                          type="number"
+                          name="calories"
+                          value={editedDiet.calories}
+                          onChange={handleChange}
+                        />
+                      </div>
+                      <div className="col">
+                        <input
+                          type="number"
+                          name="carbs"
+                          value={editedDiet.carbs}
+                          onChange={handleChange}
+                        />
+                      </div>
+                      <div className="col">
+                        <button type="submit">Save</button>
+                        <button
+                          type="button"
+                          onClick={() => setEditingDietId(null)}
+                        >
+                          Cancel
                         </button>
-                        <button onClick={() => handleDeleteClick(diet._id)}>
-                          Delete
-                        </button>
-                      </>
-                    )}
-                  </div>
+                      </div>
+                    </form>
+                  ) : (
+                    <>
+                      <div className="col">{diet.food}</div>
+                      <div className="col">{diet.calories} cal</div>
+                      <div className="col">{diet.carbs}g Carbs</div>
+                      <div className="col">
+                        {location.pathname !== "/" && (
+                          <>
+                            <button onClick={() => handleEditClick(diet)}>
+                              Edit
+                            </button>
+                            <button onClick={() => handleDeleteClick(diet._id)}>
+                              Delete
+                            </button>
+                          </>
+                        )}
+                      </div>
+                    </>
+                  )}
                 </div>
               </h4>
             </div>
           ))}
+
+          <div className="row">
+            <div className="col">
+              {showAddForm && (
+                <div className="card mb-3">
+                  <h4 className="card-header bg-light text-dark p-2 m-0">
+                    <form onSubmit={handleFormSubmitAdd}>
+                      <div className="row">
+                        <div className="col">
+                          <label>Food</label>
+                          <input
+                            type="text"
+                            name="food"
+                            value={inputDiet.food}
+                            onChange={handleChangeAdd}
+                          ></input>
+                        </div>
+                        <div className="col">
+                          <label>Calories</label>
+                          <input
+                            type="number"
+                            name="calories"
+                            value={inputDiet.calories}
+                            onChange={handleChangeAdd}
+                          ></input>
+                        </div>
+                        <div className="col">
+                          <label>Carbs</label>
+                          <input
+                            type="number"
+                            name="carbs"
+                            value={inputDiet.carbs}
+                            onChange={handleChangeAdd}
+                          ></input>
+                        </div>
+                        <div className="col">
+                          <button type="submit">Save</button>
+                          <button
+                            type="cancel"
+                            onClick={() => setShowAddForm(false)}
+                          >
+                            Cancel
+                          </button>
+                        </div>
+                      </div>
+                    </form>
+                  </h4>
+                </div>
+              )}
+            </div>
+          </div>
+
+          <button
+            className="btn btn-secondary"
+            onClick={() => setShowAddForm(true)}
+          >
+            Add Item
+          </button>
         </>
       ) : (
         <>
@@ -201,7 +304,7 @@ const DietList = () => {
                   <div className="row">
                     <div className="col">{diet.food}</div>
                     <div className="col">{diet.calories} cal</div>
-                    <div className="col">{diet.carbs} g</div>
+                    <div className="col">{diet.carbs}g Carbs</div>
                     <div className="col">Login to View</div>
                     {/* made changes here  */}
                   </div>

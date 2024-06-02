@@ -39,7 +39,7 @@ const WorkoutList = ({ selectedDate }) => {
     //example "mpnday == monday"
     (workout) => workout.dayofWeek === today
   );
-  console.log("Todays workouts", todayWorkouts);
+  // console.log("Todays workouts", todayWorkouts);
 
   //handleDelete click
   const handleDeleteClick = async (_id) => {
@@ -134,6 +134,7 @@ const WorkoutList = ({ selectedDate }) => {
                           <div className="col" style={{ fontSize: "12px" }}>
                             {workout.dayofWeek}
                           </div>
+
                           <div className="col" style={{ fontSize: "12px" }}>
                             {workout.exercise}
                           </div>
@@ -147,7 +148,8 @@ const WorkoutList = ({ selectedDate }) => {
             </>
           ) : (
             <>
-              {todayWorkouts.length === 0 ? (
+              {todayWorkouts.filter((workout) => !workout.completed).length ===
+              0 ? (
                 <p>No workouts scheduled for today.</p>
               ) : (
                 todayWorkouts

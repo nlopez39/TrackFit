@@ -8,6 +8,10 @@ const goalsSchema = new Schema({
   date: {
     type: String,
   },
+  completed: {
+    type: Boolean,
+    default: false, // By default, a workout is not completed
+  },
 });
 
 const Goals = model("Goals", goalsSchema);
