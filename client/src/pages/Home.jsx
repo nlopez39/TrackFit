@@ -92,7 +92,17 @@ const Home = () => {
                         SUMMER CHALLENGE 2024
                       </Link>
                     ) : (
-                      <Link to="/signup">SUMMER CHALLENGE 2024</Link>
+                      <Link
+                        style={{
+                          fontWeight: "bold",
+                          fontSize: "20px",
+                          color: "white",
+                          textShadow: "3px 3px 10px black",
+                        }}
+                        to="/signup"
+                      >
+                        SUMMER CHALLENGE 2024
+                      </Link>
                     )}
                   </h5>
                 </div>
