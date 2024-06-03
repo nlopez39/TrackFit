@@ -6,6 +6,7 @@ import React, { useState } from "react";
 import ProgressList from "../components/ProgressList";
 import { QUERY_WORKOUT } from "../utils/queries";
 
+
 import Auth from "../utils/auth";
 
 export default function Progress() {
@@ -52,6 +53,7 @@ export default function Progress() {
               </div>
             </div>
             <ProgressList />
+            
           </>
         ) : (
           <>

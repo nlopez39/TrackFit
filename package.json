@@ -21,7 +21,9 @@
     "@fortawesome/free-solid-svg-icons": "^6.5.2",
     "@fortawesome/react-fontawesome": "^0.2.2",
     "bootstrap": "^5.3.3",
+    "chart.js": "^4.4.3",
     "date-fns": "^3.6.0",
-    "react-calendar": "^5.0.0"
+    "react-calendar": "^5.0.0",
+    "react-chartjs-2": "^5.2.0"
   }
 }
