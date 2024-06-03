@@ -105,9 +105,9 @@ const WorkoutList = ({ selectedDate }) => {
     }
   };
   const formatToday = format(new Date(), "MMMM do yyyy");
-  if (!data?.workouts.length) {
-    return <h3>No Workouts Yet</h3>;
-  }
+  // if (!data?.workouts.length) {
+  //   return <h3>No Workouts Yet</h3>;
+  // }
   return (
     <>
       {Auth.loggedIn() ? (
@@ -115,12 +115,15 @@ const WorkoutList = ({ selectedDate }) => {
           {location.pathname !== "/workout" ? (
             <>
               <div className="row">
-                <label className="col" style={{ marginLeft: "1rem" }}>
-                  My Schedule
-                </label>
+                <div className="col">My Schedule</div>
+
                 <label className="col mb-2" style={{ marginLeft: "14rem" }}>
                   <Link to="/workout">View All</Link>
                 </label>
+                {data?.workouts.filter((workout) => !workout.completed)
+                  .length === 0 ? (
+                  <p>No Workouts Yet</p>
+                ) : null}
               </div>
 
               {data?.workouts &&
@@ -148,6 +151,7 @@ const WorkoutList = ({ selectedDate }) => {
             </>
           ) : (
             <>
+              <h3>Today's Workouts</h3>
               {todayWorkouts.filter((workout) => !workout.completed).length ===
               0 ? (
                 <p>No workouts scheduled for today.</p>
@@ -245,8 +249,46 @@ const WorkoutList = ({ selectedDate }) => {
                     </div>
                   </>
                 )}
+                <h3>My Scheduled Workouts</h3>
 
-                <h3>Completed Workouts</h3>
+                {data?.workouts &&
+                  data?.workouts
+                    .slice(0, 5)
+                    .filter((workout) => !workout.completed)
+                    .map((workout) => (
+                      <div key={workout._id} className="card mb-3">
+                        <h4 className="card-header bg-light text-dark p-2 m-0">
+                          <div className="row">
+                            <div className="col" style={{ fontSize: "12px" }}>
+                              {workout.dayofWeek}
+                            </div>
+
+                            <div className="col" style={{ fontSize: "12px" }}>
+                              {workout.exercise}
+                            </div>
+                            <div className="col" style={{ fontSize: "12px" }}>
+                              {workout.caloriesBurned} calories
+                            </div>
+                            <div className="col">
+                              <button
+                                onClick={() => handleDeleteClick(workout._id)}
+                              >
+                                Delete
+                              </button>
+                              <button
+                                onClick={() =>
+                                  handleCompletedWorkout(workout._id)
+                                }
+                              >
+                                Complete
+                              </button>
+                            </div>
+                          </div>
+                        </h4>
+                      </div>
+                    ))}
+
+                <h3 className="mt-4">Completed Workouts</h3>
                 <div className="card border rounded ">
                   {data?.workouts
                     .filter((workout) => workout.completed)

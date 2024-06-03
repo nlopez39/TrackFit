@@ -161,9 +161,9 @@ const ProgressList = () => {
   };
 
   const formattedDate = format(today, "MMMM do yyyy");
-  if (!data?.goals.length) {
-    return <h3>No Goals Yet</h3>;
-  }
+  // if (!data?.goals.length) {
+  //   return <h3>No Goals Yet</h3>;
+  // }
 
   return (
     <div>
