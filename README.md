@@ -27,9 +27,11 @@ you should also seed the data
 
 # Screenshot of deployed application
 
+npm
+
 # Credits
 
-https://www.w3schools.com/html/html5_semantic_elements.asp https://dev.to/merlos/how-to-write-a-good-readme-bog
+Bootstrap, graphql, Apollo client
 
 # Contributors
 
