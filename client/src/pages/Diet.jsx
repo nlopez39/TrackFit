@@ -37,15 +37,18 @@ export default function Diet() {
                   Total Carbs
                   <h4>{totalCarbs} grams</h4>
                 </h3>
+                <div style={{maxHeight: "200", maxWidth: "200"}} >
+                <DonutChart
+                  consumedCalories={consumedCalories}
+                  remainingCalories={remainingCalories}
+                />
+                </div>
                 
                
                
               </div>
             </div>
-            <DonutChart
-                  consumedCalories={consumedCalories}
-                  remainingCalories={remainingCalories}
-                />
+            
             <DietList />
           </>
         ) : (

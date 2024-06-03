@@ -25,12 +25,13 @@ const DonutChart = ({ consumedCalories, remainingCalories }) => {
   
   const options = {
     plugins: {
+      
       legend: {
         display: false
       },
       title: {
         display: true,
-        text: "Avg interest by month (days)",
+        text: "Calorie Chart",
         padding: {
           bottom: 30
         },
@@ -46,12 +47,13 @@ const DonutChart = ({ consumedCalories, remainingCalories }) => {
         color: "white",
         fontSize: 25,
       }
-    }
+    },
+    maintainAspectRatio: false
   };
      
 
 
-  return <Doughnut data={data} plugins={[ChartDataLabels]} options={options} />;
+  return <Doughnut data={data} plugins={[ChartDataLabels]} options={options} width={"250px"} height={"250px"}/>;
 };
 
 export default DonutChart;
