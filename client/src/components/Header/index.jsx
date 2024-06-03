@@ -47,16 +47,14 @@ const Header = () => {
         <div>
           {Auth.loggedIn() ? (
             <>
-              <Link className="m-2" to="/me" style={{ color: "#ABA9A9" }}>
-                My Profile
-              </Link>
-              <button
+         
+              <div
                 className="m-2"
-                style={{ border: "none" }}
+                style={{ border: "none", color: "#ABA9A9" , fontSize:"15pt" }}
                 onClick={logout}
               >
                 Logout
-              </button>
+              </div>
             </>
           ) : (
             <>

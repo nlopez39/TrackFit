@@ -26,7 +26,7 @@ const Home = () => {
 
   return (
     <main className="container" style={{backgroundColor: "#ffffff"}}>
-      <h1 className="text-center mb-4" style={{ fontSize: "50px" , fontWeight: "Bold", color: "#343A40" }}>
+      <h1 className="text-left mb-4" style={{ fontSize: "50px" , fontWeight: "Bold", color: "#343A40" }}>
         {Auth.loggedIn() ? `Welcome, ${username}!` : "Welcome to TrackFit!"} 
       </h1>
       {Auth.loggedIn() ? (
