@@ -134,14 +134,14 @@ const WorkoutList = ({ selectedDate }) => {
                     <div key={workout._id} className="card mb-3">
                       <h4 className="card-header bg-light text-dark p-2 m-0">
                         <div className="row">
-                          <div className="col" style={{ fontSize: "12px" }}>
+                          <div className="col" style={{ fontSize: "15px" }}>
                             {workout.dayofWeek}
                           </div>
 
-                          <div className="col" style={{ fontSize: "12px" }}>
+                          <div className="col" style={{ fontSize: "15px" }}>
                             {workout.exercise}
                           </div>
-                          <div className="col" style={{ fontSize: "12px" }}>
+                          <div className="col" style={{ fontSize: "15px" }}>
                             {workout.caloriesBurned} calories
                           </div>
                         </div>
@@ -165,13 +165,13 @@ const WorkoutList = ({ selectedDate }) => {
                     <div key={workout._id} className="card mt-4 mb-3">
                       <h4 className="card-header bg-light text-dark p-2 m-0">
                         <div className="row">
-                          <div className="col" style={{ fontSize: "12px" }}>
+                          <div className="col" style={{ fontSize: "15px" }}>
                             {workout.dayofWeek}
                           </div>
-                          <div className="col" style={{ fontSize: "12px" }}>
+                          <div className="col" style={{ fontSize: "15px" }}>
                             {workout.exercise}
                           </div>
-                          <div className="col" style={{ fontSize: "12px" }}>
+                          <div className="col" style={{ fontSize: "15px" }}>
                             {workout.caloriesBurned} calories
                           </div>
                           <div className="col">
@@ -269,14 +269,14 @@ const WorkoutList = ({ selectedDate }) => {
                       <div key={workout._id} className="card mb-3">
                         <h4 className="card-header bg-light text-dark p-2 m-0">
                           <div className="row">
-                            <div className="col" style={{ fontSize: "12px" }}>
+                            <div className="col" style={{ fontSize: "15px" }}>
                               {workout.dayofWeek}
                             </div>
 
-                            <div className="col" style={{ fontSize: "12px" }}>
+                            <div className="col" style={{ fontSize: "15px" }}>
                               {workout.exercise}
                             </div>
-                            <div className="col" style={{ fontSize: "12px" }}>
+                            <div className="col" style={{ fontSize: "15px" }}>
                               {workout.caloriesBurned} calories
                             </div>
                             <div className="col">
@@ -302,23 +302,23 @@ const WorkoutList = ({ selectedDate }) => {
               <div className="completed-workouts">
 
                 <h3 className="mt-4">Completed Workouts</h3>
-                <div className="card border rounded ">
+                <div className=" ">
                   {data?.workouts
                     .filter((workout) => workout.completed)
                     .map((workout) => (
                       <div key={workout._id} className="card mb-3">
-                        <h4 className="card-header p-2 m-0">
+                        <h4 className="card-header completed p-2 m-0">
                           <div className="row">
-                            <div className="col" style={{ fontSize: "12px" }}>
+                            <div className="col" style={{ fontSize: "15px" }}>
                               {workout.dayofWeek}
                             </div>
-                            <div className="col" style={{ fontSize: "12px" }}>
+                            <div className="col" style={{ fontSize: "15px" }}>
                               {workout.exercise}
                             </div>
-                            <div className="col" style={{ fontSize: "12px" }}>
+                            <div className="col" style={{ fontSize: "15px" }}>
                               {workout.caloriesBurned} calories
                             </div>
-                            <div className="col" style={{ fontSize: "12px" }}>
+                            <div className="col" style={{ fontSize: "15px" }}>
                               Completed On {formatToday}
                             </div>
                           </div>
@@ -382,7 +382,7 @@ const WorkoutList = ({ selectedDate }) => {
             <label className="col" >
               My Schedule
             </label>
-            <label className="col mb-2" >
+            <label className="col mb-2" style={{ marginLeft: "14rem" }}>
               <Link to="/workout">View All</Link>
             </label>
           </div>
@@ -395,14 +395,14 @@ const WorkoutList = ({ selectedDate }) => {
                 <div key={workout._id} className="card mb-3">
                   <h4 className="card-header bg-light text-dark p-2 m-0">
                     <div className="row">
-                      <div className="col" style={{ fontSize: "12px" }}>
+                      <div className="col" style={{ fontSize: "15px" }}>
                         {workout.dayofWeek}
                       </div>
-                      <div className="col" style={{ fontSize: "12px" }}>
+                      <div className="col" style={{ fontSize: "15px" }}>
                         {workout.exercise}
                       </div>
 
-                      <div className="col" style={{ fontSize: "12px" }}>
+                      <div className="col" style={{ fontSize: "15px" }}>
                         {workout.caloriesBurned}
                       </div>
                     </div>
