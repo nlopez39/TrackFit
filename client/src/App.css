@@ -1811,6 +1811,7 @@ color: #f97316
   border-radius: 10px;
   border: 2px solid #d3d3d3 !important;
   margin-top:20px;
+  margin-bottom: 40px;
 
 
 }
@@ -1829,4 +1830,8 @@ color: #f97316
   border-radius: 10px;
   border: 2px solid #d3d3d3 !important;
   
+}
+
+.duedate{
+
 }

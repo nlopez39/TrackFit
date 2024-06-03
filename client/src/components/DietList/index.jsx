@@ -298,7 +298,7 @@ const DietList = () => {
                 <div className="col">Diet</div>
                 <div className="col">
                   {location.pathname !== "/diet" && (
-                    <Link to="/diet">View All</Link>
+                    <Link style={{textAlign:"right"}} to="/diet">View All</Link>
                   )}
                 </div>
               </div>
