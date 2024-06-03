@@ -115,9 +115,9 @@ const WorkoutList = ({ selectedDate }) => {
           {location.pathname !== "/workout" ? (
             <>
               <div className="row">
-                <div className="col">My Schedule</div>
+                <div className="col-lg-6" style={{ fontSize:"20px" }}>My Schedule </div>
 
-                <label className="col mb-2" style={{ marginLeft: "14rem" }}>
+                <label className="col-lg-6 mb-2" style={{ fontSize:"20px", textAlign:"right" }}>
                   <Link to="/workout">View All</Link>
                 </label>
                 {data?.workouts.filter((workout) => !workout.completed)
@@ -132,8 +132,8 @@ const WorkoutList = ({ selectedDate }) => {
                   .filter((workout) => !workout.completed)
                   .map((workout) => (
                     <div key={workout._id} className="card mb-3">
-                      <h4 className="card-header bg-light text-dark p-2 m-0">
-                        <div className="row">
+                      <h4 className="card-header text-dark p-2 m-0" >
+                        <div className="row" style={{padding :"10px"}}>
                           <div className="col" style={{ fontSize: "15px" }}>
                             {workout.dayofWeek}
                           </div>
@@ -152,7 +152,7 @@ const WorkoutList = ({ selectedDate }) => {
           ) : (
             <>
 
-            <div className="todays-workouts">
+            <div className="todays-workouts col-lg-12">
             
               <h3>Today's Workouts</h3>
               {todayWorkouts.filter((workout) => !workout.completed).length ===
@@ -163,7 +163,7 @@ const WorkoutList = ({ selectedDate }) => {
                   .filter((workout) => !workout.completed)
                   .map((workout) => (
                     <div key={workout._id} className="card mt-4 mb-3">
-                      <h4 className="card-header bg-light text-dark p-2 m-0">
+                      <h4 className="card-header text-dark p-2 m-0">
                         <div className="row">
                           <div className="col" style={{ fontSize: "15px" }}>
                             {workout.dayofWeek}
@@ -206,7 +206,7 @@ const WorkoutList = ({ selectedDate }) => {
                 {showForm && (
                   <>
                     <div className="card mb-3">
-                      <h4 className="card-header bg-light text-dark p-2 m-0">
+                      <h4 className="card-header text-dark p-2 m-0">
                         <form onSubmit={handleFormSubmit}>
                           <div className="row">
                             <div className="col">
@@ -267,7 +267,7 @@ const WorkoutList = ({ selectedDate }) => {
                     .filter((workout) => !workout.completed)
                     .map((workout) => (
                       <div key={workout._id} className="card mb-3">
-                        <h4 className="card-header bg-light text-dark p-2 m-0">
+                        <h4 className="card-header text-dark p-2 m-0">
                           <div className="row">
                             <div className="col" style={{ fontSize: "15px" }}>
                               {workout.dayofWeek}

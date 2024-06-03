@@ -172,13 +172,13 @@ const ProgressList = () => {
           <div className="">
             <h4 className="card-header">
               <div className="row">
-                <h4 className="goal col mb-4">My Goals</h4>
+                <h4 className="goal col mb-4"  style={{ fontSize:"20px", paddingTop:"5px"}}>My Goals</h4>
                 {data?.goals.filter((goal) => !goal.completed).length === 0 ? (
                   <p>No Goals Yet</p>
                 ) : null}
                 <div className="col">
                   {location.pathname !== "/progress" && (
-                    <Link to="/progress">View All</Link>
+                    <Link style={{ fontSize:"20px"}} to="/progress">View All</Link>
                   )}
                 </div>
               </div>
@@ -189,11 +189,11 @@ const ProgressList = () => {
             .filter((goal) => !goal.completed)
             .map((goal) => (
               <div key={goal._id} className="card">
-                <h4 className="card-header bg-light text-dark">
-                  <div className="row">
+                <h4 className="card-header text-dark">
+                  <div className="col-lg-12">
                     {editingGoalId === goal._id ? (
                       <form onSubmit={handleFormSubmit}>
-                        <div className="col">
+                        <div className="col" >
                           <label>Goal</label>
                           <input
                             type="text"
@@ -202,7 +202,7 @@ const ProgressList = () => {
                             onChange={handleChange}
                           ></input>
                         </div>
-                        <div className="col">
+                        <div className="col duedate">
                           <label>Due Date</label>
                           <input
                             type="date"
@@ -308,12 +308,12 @@ const ProgressList = () => {
                 )}
 
                 <h3>Completed Goals</h3>
-                <div className="card border rounded ">
+                <div className="card">
                   {data?.goals
                     .filter((goal) => goal.completed)
                     .map((goal) => (
                       <div key={goal._id} className="card mb-3">
-                        <h4 className="card-header p-2 m-0">
+                        <h4 className="card-header completed p-2 m-0">
                           <div className="row">
                             <div className="col">{goal.goal}</div>
                             <div className="col">
