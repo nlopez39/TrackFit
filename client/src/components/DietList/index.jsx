@@ -167,7 +167,7 @@ const DietList = () => {
 
           {data?.diets.map((diet) => (
             <div key={diet._id} className="list-style card mb-3">
-              <h4 className="card-header bg-light text-dark">
+              <h4 className="card-header text-dark">
                 <div className="row">
                   {editingDietId === diet._id ? (
                     <form onSubmit={handleFormSubmit}>

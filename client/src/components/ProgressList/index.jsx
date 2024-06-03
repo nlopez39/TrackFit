@@ -172,7 +172,7 @@ const ProgressList = () => {
           <div className="">
             <h4 className="card-header">
               <div className="row">
-                <h2 className="col mb-4">My Goals</h2>
+                <h4 className="goal col mb-4">My Goals</h4>
                 {data?.goals.filter((goal) => !goal.completed).length === 0 ? (
                   <p>No Goals Yet</p>
                 ) : null}

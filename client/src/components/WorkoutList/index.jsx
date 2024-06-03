@@ -379,10 +379,10 @@ const WorkoutList = ({ selectedDate }) => {
       ) : (
         <>
           <div className="row">
-            <label className="col" style={{ marginLeft: "1rem" }}>
+            <label className="col" >
               My Schedule
             </label>
-            <label className="col mb-2" style={{ marginLeft: "14rem" }}>
+            <label className="col mb-2" >
               <Link to="/workout">View All</Link>
             </label>
           </div>
