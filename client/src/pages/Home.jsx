@@ -157,7 +157,7 @@ const Home = () => {
       </div>
       <div className="row gx-5">
         <div className="col mb-4 ">
-          <button className="btn btn-primary homepage-button" style={{ background: "#f97316;" }}>
+          <button className="btn btn-primary homepage-button" style={{ background: "#0891b2" }}>
             <Link to="/workout" style={{ color: "white" }}>
               💪 Create a New Workout
             </Link>
