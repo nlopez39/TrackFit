@@ -30,11 +30,10 @@ const Home = () => {
         {Auth.loggedIn() ? `Welcome, ${username}!` : "Welcome to TrackFit!"} 
       </h1>
       {Auth.loggedIn() ? (
-        <div className="row card gx-5 justify-content-center">
+        <div className="calories-burned row card gx-5 justify-content-center">
           <div className="col text-center">
-            <h1>
-              🔥Calories Burned🔥
-              <h2>{totalCalories}</h2>
+            <h1 style={{ fontSize: "25px" , fontWeight: "", color: "#ffffff" }}>
+              🔥 Calories Burned: {totalCalories}
             </h1>
           </div>
         </div>
@@ -158,7 +157,7 @@ const Home = () => {
       </div>
       <div className="row gx-5">
         <div className="col mb-4 ">
-          <button className="btn btn-primary homepage-button" style={{ background: "#0891b2" }}>
+          <button className="btn btn-primary homepage-button" style={{ background: "#f97316;" }}>
             <Link to="/workout" style={{ color: "white" }}>
               💪 Create a New Workout
             </Link>

@@ -1088,7 +1088,7 @@ a:hover {
   font-size: 1.25rem;
   padding: 4rem 1.4rem;
   border-radius: 10px;
-  opacity: 90%;
+  
 }
 
 .btn.homepage-button:hover {
@@ -1717,4 +1717,14 @@ label form [type='radio'] {
   .align-content-center-xl {
     align-content: center;
   }
+}
+
+.calories-burned { 
+  border-radius: 10px;
+  background-color: #f97316;
+  background-color: #0891b2;
+  border: none;
+
+  padding: 10px;
+  
 }
