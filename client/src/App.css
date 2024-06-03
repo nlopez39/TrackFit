@@ -1721,11 +1721,11 @@ label form [type='radio'] {
 
 .calories-burned { 
   border-radius: 10px;
-  background-color: #f97316;
-  background-color: #0891b2;
+  background-color: #343A40;
   border: none;
   drop-shadow: 5px 5px 5px #d3d3d3;
-  padding: 10px;
+  padding-top: 15px;
+  padding-bottom: 10px;
   
 }
 
@@ -1784,4 +1784,8 @@ color: #f97316
   margin-top:20px;
 
 
+}
+
+.list-style{
+  background-color: #000000;
 }

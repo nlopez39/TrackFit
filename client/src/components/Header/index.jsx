@@ -15,7 +15,7 @@ const Header = () => {
         <nav>
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="mr-5" style={{ fontSize: "35px" , fontWeight: "Bold" }}>
-            <Link to="/" style={{ color: "#F97316" }}>
+            <Link to="/" style={{ color: "#06b4d4" }}>
             🏋️ TrackFit
               </Link>
 
@@ -50,7 +50,7 @@ const Header = () => {
          
               <div
                 className="m-2"
-                style={{ border: "none", color: "#ABA9A9" , fontSize:"15pt" }}
+                style={{ border: "none", color: "#06b4d4" , fontSize:"15pt" }}
                 onClick={logout}
               >
                 Logout
@@ -58,10 +58,10 @@ const Header = () => {
             </>
           ) : (
             <>
-              <Link className="m-2" style={{ color: "#ABA9A9" }} to="/login">
+              <Link className="m-2" style={{ color: "#06b4d4" }} to="/login">
                 Login
               </Link>
-              <Link className="m-2" style={{ color: "#ABA9A9" }} to="/signup">
+              <Link className="m-2" style={{ color: "#06b4d4" }} to="/signup">
                 Signup
               </Link>
             </>
