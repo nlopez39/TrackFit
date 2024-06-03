@@ -42,7 +42,7 @@ const Home = () => {
         </div>
       ) : null}
       <div className="row gx-5">
-        <div className="col-lg-6 mb-4">
+        <div className="col-lg-8 mb-4">
           <div
             id="carouselExampleIndicators"
             className="carousel slide"
@@ -189,7 +189,7 @@ const Home = () => {
             </button>
           </div>
         </div>
-        <div className="col-lg-6 mb-4">
+        <div className="col-lg-4 mb-4">
           <div>
             <WorkoutList />
           </div>
@@ -202,7 +202,7 @@ const Home = () => {
           </div>
         </div>
         <div className="col-lg-4 mb-4">
-          <div className="p-4 border rounded ">
+          <div className=" goals p-4 ">
             <ProgressList />
           </div>
         </div>
@@ -214,7 +214,8 @@ const Home = () => {
             style={{ background: "#0891b2" }}
           >
             <Link to="/workout" style={{ color: "white" }}>
-              💪 Create a New Workout
+            <h1>💪 </h1>
+              Create New Workout
             </Link>
           </button>
         </div>
@@ -224,7 +225,8 @@ const Home = () => {
             style={{ background: "#0891b2" }}
           >
             <Link to="/diet" style={{ color: "white" }}>
-              🍔 Add Meal
+            <h1> 🍔 </h1>
+              Add Meal
             </Link>
           </button>
         </div>
@@ -234,7 +236,8 @@ const Home = () => {
             style={{ background: "#0891b2" }}
           >
             <Link to="/progress" style={{ color: "white" }}>
-              🏆 Add Goal
+            <h1>🏆 </h1>
+              Add Goal
             </Link>
           </button>
         </div>

@@ -50,7 +50,7 @@ const Header = () => {
          
               <div
                 className="m-2"
-                style={{ border: "none", color: "#06b4d4" , fontSize:"15pt" }}
+                style={{ border: "none", color: "#FAF9F0" , fontSize:"15pt" }}
                 onClick={logout}
               >
                 Logout
@@ -58,10 +58,10 @@ const Header = () => {
             </>
           ) : (
             <>
-              <Link className="m-2" style={{ color: "#06b4d4" }} to="/login">
+              <Link className="m-2" style={{ color: "#FAF9F0" }} to="/login">
                 Login
               </Link>
-              <Link className="m-2" style={{ color: "#06b4d4" }} to="/signup">
+              <Link className="m-2" style={{ color: "#FAF9F0" }} to="/signup">
                 Signup
               </Link>
             </>
