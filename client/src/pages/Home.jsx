@@ -25,14 +25,17 @@ const Home = () => {
   // });
 
   return (
-    <main className="container" style={{backgroundColor: "#ffffff"}}>
-      <h1 className="text-left mb-4" style={{ fontSize: "50px" , fontWeight: "Bold", color: "#343A40" }}>
-        {Auth.loggedIn() ? `Welcome, ${username}!` : "Welcome to TrackFit!"} 
+    <main className="container" style={{ backgroundColor: "#ffffff" }}>
+      <h1
+        className="text-left mb-4"
+        style={{ fontSize: "50px", fontWeight: "Bold", color: "#343A40" }}
+      >
+        {Auth.loggedIn() ? `Welcome, ${username}!` : "Welcome to TrackFit!"}
       </h1>
       {Auth.loggedIn() ? (
         <div className="calories-burned row card gx-5 justify-content-center">
           <div className="col text-center">
-            <h1 style={{ fontSize: "25px" , fontWeight: "", color: "#ffffff" }}>
+            <h1 style={{ fontSize: "25px", fontWeight: "", color: "#ffffff" }}>
               🔥 Calories Burned: {totalCalories}
             </h1>
           </div>
@@ -77,9 +80,29 @@ const Home = () => {
                 <div className="carousel-caption d-none d-md-block">
                   <h5>
                     {Auth.loggedIn() ? (
-                      <Link to="/workout">SUMMER CHALLENGE 2024</Link>
+                      <Link
+                        style={{
+                          fontWeight: "bold",
+                          fontSize: "20px",
+                          color: "white",
+                          textShadow: "3px 3px 10px black",
+                        }}
+                        to="/workout"
+                      >
+                        SUMMER CHALLENGE 2024
+                      </Link>
                     ) : (
-                      <Link to="/signup">SUMMER CHALLENGE 2024</Link>
+                      <Link
+                        style={{
+                          fontWeight: "bold",
+                          fontSize: "20px",
+                          color: "white",
+                          textShadow: "3px 3px 10px black",
+                        }}
+                        to="/signup"
+                      >
+                        SUMMER CHALLENGE 2024
+                      </Link>
                     )}
                   </h5>
                 </div>
@@ -91,7 +114,16 @@ const Home = () => {
                   alt="Friend Workout"
                 />
                 <div className="carousel-caption d-none d-md-block">
-                  <h5>Share workouts with Friends</h5>
+                  <h5
+                    style={{
+                      fontSize: "20px",
+                      fontWeight: "bold",
+                      color: "white",
+                      textShadow: "2px 2px 6px black",
+                    }}
+                  >
+                    Share workouts with Friends
+                  </h5>
                 </div>
               </div>
               <div className="carousel-item">
@@ -103,9 +135,29 @@ const Home = () => {
                 <div className="carousel-caption d-none d-md-block">
                   <h5>
                     {Auth.loggedIn() ? (
-                      <Link to="/diet">Log Your Meals</Link>
+                      <Link
+                        style={{
+                          fontSize: "20px",
+                          fontWeight: "bold",
+                          color: "white",
+                          textShadow: "2px 2px 6px black",
+                        }}
+                        to="/diet"
+                      >
+                        Log Your Meals
+                      </Link>
                     ) : (
-                      <Link to="/signup">Log Your Meals</Link>
+                      <Link
+                        style={{
+                          fontSize: "20px",
+                          fontWeight: "bold",
+                          color: "white",
+                          textShadow: "2px 2px 6px black",
+                        }}
+                        to="/signup"
+                      >
+                        Log Your Meals
+                      </Link>
                     )}
                   </h5>
                 </div>
@@ -157,21 +209,30 @@ const Home = () => {
       </div>
       <div className="row gx-5">
         <div className="col mb-4 ">
-          <button className="btn btn-primary homepage-button" style={{ background: "#0891b2" }}>
+          <button
+            className="btn btn-primary homepage-button"
+            style={{ background: "#0891b2" }}
+          >
             <Link to="/workout" style={{ color: "white" }}>
               💪 Create a New Workout
             </Link>
           </button>
         </div>
         <div className="col mb-4">
-          <button className="btn btn-primary homepage-button" style={{ background: "#0891b2" }}>
+          <button
+            className="btn btn-primary homepage-button"
+            style={{ background: "#0891b2" }}
+          >
             <Link to="/diet" style={{ color: "white" }}>
               🍔 Add Meal
             </Link>
           </button>
         </div>
         <div className="col mb-4">
-          <button className="btn btn-primary homepage-button" style={{ background: "#0891b2" }}>
+          <button
+            className="btn btn-primary homepage-button"
+            style={{ background: "#0891b2" }}
+          >
             <Link to="/progress" style={{ color: "white" }}>
               🏆 Add Goal
             </Link>
