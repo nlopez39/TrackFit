@@ -20,12 +20,11 @@ export default function Progress() {
       <div>
         {Auth.loggedIn() ? (
           <>
-            <div className="row card gx-5 justify-content-center">
+            <div className="calories-burned row card gx-5 justify-content-center">
               <div className="col text-center">
-                <h1>
-                  🔥Calories Burned🔥
-                  <h2>{totalCalories}</h2>
-                </h1>
+              <h1 style={{ fontSize: "25px" , fontWeight: "", color: "#ffffff" }}>
+              🔥 Calories Burned: {totalCalories}
+            </h1>
               </div>
             </div>
             <ProgressList />

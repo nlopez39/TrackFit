@@ -25,16 +25,15 @@ const Home = () => {
   // });
 
   return (
-    <main className="container mt-4">
-      <h1 className="text-center mb-4">
-        {Auth.loggedIn() ? `Welcome, ${username}!` : "Welcome to TrackFit!"}
+    <main className="container" style={{backgroundColor: "#ffffff"}}>
+      <h1 className="text-left mb-4" style={{ fontSize: "50px" , fontWeight: "Bold", color: "#343A40" }}>
+        {Auth.loggedIn() ? `Welcome, ${username}!` : "Welcome to TrackFit!"} 
       </h1>
       {Auth.loggedIn() ? (
-        <div className="row card gx-5 justify-content-center">
+        <div className="calories-burned row card gx-5 justify-content-center">
           <div className="col text-center">
-            <h1>
-              🔥Calories Burned🔥
-              <h2>{totalCalories}</h2>
+            <h1 style={{ fontSize: "25px" , fontWeight: "", color: "#ffffff" }}>
+              🔥 Calories Burned: {totalCalories}
             </h1>
           </div>
         </div>
@@ -158,21 +157,21 @@ const Home = () => {
       </div>
       <div className="row gx-5">
         <div className="col mb-4 ">
-          <button className="btn btn-primary" style={{ background: "#5AC0DB" }}>
+          <button className="btn btn-primary homepage-button" style={{ background: "#0891b2" }}>
             <Link to="/workout" style={{ color: "white" }}>
               💪 Create a New Workout
             </Link>
           </button>
         </div>
         <div className="col mb-4">
-          <button className="btn btn-primary" style={{ background: "#5AC0DB" }}>
+          <button className="btn btn-primary homepage-button" style={{ background: "#0891b2" }}>
             <Link to="/diet" style={{ color: "white" }}>
               🍔 Add Meal
             </Link>
           </button>
         </div>
         <div className="col mb-4">
-          <button className="btn btn-primary" style={{ background: "#5AC0DB" }}>
+          <button className="btn btn-primary homepage-button" style={{ background: "#0891b2" }}>
             <Link to="/progress" style={{ color: "white" }}>
               🏆 Add Goal
             </Link>

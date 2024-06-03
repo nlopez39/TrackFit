@@ -151,6 +151,9 @@ const WorkoutList = ({ selectedDate }) => {
             </>
           ) : (
             <>
+
+            <div className="todays-workouts">
+            
               <h3>Today's Workouts</h3>
               {todayWorkouts.filter((workout) => !workout.completed).length ===
               0 ? (
@@ -197,6 +200,8 @@ const WorkoutList = ({ selectedDate }) => {
                 >
                   Add a Workout
                 </button>
+
+              </div>
 
                 {showForm && (
                   <>
@@ -288,6 +293,51 @@ const WorkoutList = ({ selectedDate }) => {
                       </div>
                     ))}
 
+</div>
+
+            <div className="scheduled-workouts">
+                <h3>My Scheduled Workouts</h3>
+
+                {data?.workouts &&
+                  data?.workouts
+                    .slice(0, 5)
+                    .filter((workout) => !workout.completed)
+                    .map((workout) => (
+                      <div key={workout._id} className="card mb-3">
+                        <h4 className="card-header bg-light text-dark p-2 m-0">
+                          <div className="row">
+                            <div className="col" style={{ fontSize: "12px" }}>
+                              {workout.dayofWeek}
+                            </div>
+
+                            <div className="col" style={{ fontSize: "12px" }}>
+                              {workout.exercise}
+                            </div>
+                            <div className="col" style={{ fontSize: "12px" }}>
+                              {workout.caloriesBurned} calories
+                            </div>
+                            <div className="col">
+                              <button
+                                onClick={() => handleDeleteClick(workout._id)}
+                              >
+                                Delete
+                              </button>
+                              <button
+                                onClick={() =>
+                                  handleCompletedWorkout(workout._id)
+                                }
+                              >
+                                Complete
+                              </button>
+                            </div>
+                          </div>
+                        </h4>
+                      </div>
+                    ))}
+                    </div>
+
+              <div className="completed-workouts">
+
                 <h3 className="mt-4">Completed Workouts</h3>
                 <div className="card border rounded ">
                   {data?.workouts
@@ -312,8 +362,11 @@ const WorkoutList = ({ selectedDate }) => {
                         </h4>
                       </div>
                     ))}
+                    </div>
                 </div>
                 <div>
+
+                <div className="summer-challenge">
                   <h4 className="mt-4">Summer Challenge 2024</h4>
                   <p>
                     Complete the Summer Challenge and gain 100 Progress Points
@@ -356,6 +409,7 @@ const WorkoutList = ({ selectedDate }) => {
                   </div>
                 </div>
               </div>
+              
             </>
           )}
         </>

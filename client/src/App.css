@@ -57,7 +57,7 @@ hr {
  * 2. Correct the odd `em` font sizing in all browsers.
  */
 pre {
-  font-family: monospace, monospace;
+  font-family: 'Open Sans', 'Helvetica', 'Arial', sans-serif;
   /* 1 */
   font-size: 1em;
   /* 2 */
@@ -100,7 +100,7 @@ strong {
 code,
 kbd,
 samp {
-  font-family: monospace, monospace;
+  font-family: 'Open Sans', 'Helvetica', 'Arial', sans-serif;
   /* 1 */
   font-size: 1em;
   /* 2 */
@@ -369,7 +369,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Open Sans', 'Helvetica', 'Arial', sans-serif;
   margin: 0 0 0.5rem;
   line-height: 1.25;
 }
@@ -1083,6 +1083,18 @@ a:hover {
   background-color: #31a9e1;
 }
 
+.btn.homepage-button {
+  width: 110%;
+  font-size: 1.25rem;
+  padding: 4rem 1.4rem;
+  border-radius: 10px;
+  
+}
+
+.btn.homepage-button:hover {
+background: #0891b2;
+}
+
 .card {
   border: 1px solid #1a1a1a;
   margin-bottom: 1rem;
@@ -1705,4 +1717,71 @@ label form [type='radio'] {
   .align-content-center-xl {
     align-content: center;
   }
+}
+
+.calories-burned { 
+  border-radius: 10px;
+  background-color: #f97316;
+  background-color: #0891b2;
+  border: none;
+  drop-shadow: 5px 5px 5px #d3d3d3;
+  padding: 10px;
+  
+}
+
+.a.view-all{
+color: #f97316
+}
+
+.view-all:hover{
+  
+}
+
+.scheduled-workouts{
+  background-color: #ffffff;
+  box-shadow: 3px 3px 3px darkgray;
+  padding: 20px;
+  border: 2px solid #d3d3d3 !important;
+  border-radius: 10px;
+  margin-top:20px;
+  
+}
+.todays-workouts{
+  background-color: #ffffff;
+  box-shadow: 3px 3px 3px darkgray;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 10px;
+  border: 2px solid #d3d3d3 !important;
+  margin-top:20px;
+  
+}
+
+.completed-workouts{
+  background-color: #ffffff;
+  box-shadow: 3px 3px 3px darkgray;
+  padding-top: 5px;
+  padding-bottom: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 10px;
+  border: 2px solid #d3d3d3 !important;
+  margin-top:20px;
+
+}
+
+.summer-challenge{
+  background-color: #ffffff;
+  box-shadow: 3px 3px 3px darkgray;
+  padding-top: 5px;
+  padding-bottom: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 10px;
+  border: 2px solid #d3d3d3 !important;
+  margin-top:20px;
+
+
 }

@@ -10,30 +10,29 @@ const Header = () => {
     Auth.logout();
   };
   return (
-    <header className="bg-dark text-light mb-4 py-3">
-      <div className="d-flex justify-content-between navbar navbar-expand-lg p-4 main-navbar">
+    <header className="bg-dark text-light mb-4">
+      <div className="d-flex justify-content-between navbar navbar-expand-lg pl-2 main-navbar">
         <nav>
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            <li className="mr-3" style={{ fontSize: "16px" }}>
-              🏋️ TrackFit
-            </li>
-            <li className="nav-item mr-2">
-              <Link to="/" style={{ color: "#ABA9A9" }}>
-                Home
+            <li className="mr-5" style={{ fontSize: "35px" , fontWeight: "Bold" }}>
+            <Link to="/" style={{ color: "#F97316" }}>
+            🏋️ TrackFit
               </Link>
+
             </li>
-            <li className="nav-item mr-2">
-              <Link to="/workout" style={{ color: "#ABA9A9" }}>
+        
+            <li className="nav-item ml-10 mr-4 mt-2">
+              <Link to="/workout" style={{ fontSize: "25px" , color: "#FAF9F0" }}>
                 Workout
               </Link>
             </li>
-            <li className="nav-item mr-2">
-              <Link to="/progress" style={{ color: "#ABA9A9" }}>
+            <li className="nav-item mr-4 mt-2">
+              <Link to="/progress" style={{ fontSize: "25px" , color: "#FAF9F0" }}>
                 Progress
               </Link>
             </li>
-            <li className="nav-item mr-2">
-              <Link to="/diet" style={{ color: "#ABA9A9" }}>
+            <li className="nav-item mr-4 mt-2 ">
+              <Link to="/diet" style={{ fontSize: "25px" , color: "#FAF9F0" }}>
                 Diet
               </Link>
             </li>
@@ -48,16 +47,14 @@ const Header = () => {
         <div>
           {Auth.loggedIn() ? (
             <>
-              <Link className="m-2" to="/me" style={{ color: "#ABA9A9" }}>
-                My Profile
-              </Link>
-              <button
+         
+              <div
                 className="m-2"
-                style={{ border: "none" }}
+                style={{ border: "none", color: "#ABA9A9" , fontSize:"15pt" }}
                 onClick={logout}
               >
                 Logout
-              </button>
+              </div>
             </>
           ) : (
             <>
