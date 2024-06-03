@@ -4,6 +4,7 @@ import { useQuery } from "@apollo/client";
 import { QUERY_DIET } from "../utils/queries";
 import React, { useState } from "react";
 import DietList from "../components/DietList";
+import DonutChart from "../components/DonutChart";
 
 import Auth from "../utils/auth";
 
@@ -17,6 +18,10 @@ export default function Diet() {
     totalCalories += data.calories;
     totalCarbs += data.carbs;
   });
+
+  const consumedCalories = totalCalories;
+  const remainingCalories = 2000 - totalCalories; 
+
   return (
     <>
       <div>
@@ -32,8 +37,15 @@ export default function Diet() {
                   Total Carbs
                   <h4>{totalCarbs} grams</h4>
                 </h3>
+                
+               
+               
               </div>
             </div>
+            <DonutChart
+                  consumedCalories={consumedCalories}
+                  remainingCalories={remainingCalories}
+                />
             <DietList />
           </>
         ) : (

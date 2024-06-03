@@ -113,6 +113,7 @@ const DietList = () => {
 
     try {
       const { data } = await addDiet({
+        
         variables: {
           food: inputDiet.food,
           calories: parseInt(inputDiet.calories),
@@ -120,6 +121,7 @@ const DietList = () => {
           // thoughtAuthor: Auth.getProfile().data.username,
         },
       });
+      console.log(data);
 
       setInputDiet({
         food: "",
