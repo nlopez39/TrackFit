@@ -18,7 +18,8 @@ const Home = () => {
   data?.workouts.forEach((workout) => {
     totalCalories += workout.caloriesBurned;
   });
-
+  // Calculate progress percentage
+  const progressPercentage = (totalCalories / 2000) * 100;
   // const { loading: loadingUsers, data: dataUser } = useQuery(QUERY_USER, {
   //   //pass username as a variable to this query because its required in the query schema fro graphql
   //   variables: { username },
@@ -38,6 +39,24 @@ const Home = () => {
             <h1 style={{ fontSize: "25px", fontWeight: "", color: "#ffffff" }}>
               🔥 Calories Burned: {totalCalories}
             </h1>
+            <h1 style={{ fontSize: "25px", fontWeight: "", color: "#ffffff" }}>
+              Progress
+            </h1>
+            <div
+              className="progress-container"
+              style={{ display: "flex", justifyContent: "center" }}
+            >
+              <div className="progress" style={{ width: "200px" }}>
+                <div
+                  className="progress-bar"
+                  role="progressbar"
+                  style={{ width: `${progressPercentage}%` }}
+                  aria-valuenow={progressPercentage}
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                ></div>
+              </div>
+            </div>
           </div>
         </div>
       ) : null}
@@ -214,7 +233,7 @@ const Home = () => {
             style={{ background: "#0891b2" }}
           >
             <Link to="/workout" style={{ color: "white" }}>
-            <h1>💪 </h1>
+              <h1>💪 </h1>
               Create New Workout
             </Link>
           </button>
@@ -225,7 +244,7 @@ const Home = () => {
             style={{ background: "#0891b2" }}
           >
             <Link to="/diet" style={{ color: "white" }}>
-            <h1> 🍔 </h1>
+              <h1> 🍔 </h1>
               Add Meal
             </Link>
           </button>
@@ -236,7 +255,7 @@ const Home = () => {
             style={{ background: "#0891b2" }}
           >
             <Link to="/progress" style={{ color: "white" }}>
-            <h1>🏆 </h1>
+              <h1>🏆 </h1>
               Add Goal
             </Link>
           </button>
