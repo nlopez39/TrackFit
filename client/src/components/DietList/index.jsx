@@ -140,9 +140,9 @@ const DietList = () => {
       [name]: value,
     });
   };
-  if (!data?.diets.length) {
-    return <h3>No Diets Yet</h3>;
-  }
+  // if (!data?.diets.length) {
+  //   return <h3>No Diets Yet</h3>;
+  // }
 
   return (
     <div>
@@ -152,11 +152,15 @@ const DietList = () => {
             <h4 className="card-header">
               <div className="row">
                 <div className="col">My Diet</div>
+
                 <div className="col">
                   {location.pathname !== "/diet" && (
                     <Link to="/diet">View All</Link>
                   )}
                 </div>
+                {data?.diets.filter((diet) => !diet.completed).length === 0 ? (
+                  <p>No Meals Yet</p>
+                ) : null}
               </div>
             </h4>
           </div>
@@ -275,13 +279,14 @@ const DietList = () => {
               )}
             </div>
           </div>
-
-          <button
-            className="btn btn-secondary"
-            onClick={() => setShowAddForm(true)}
-          >
-            Add Item
-          </button>
+          {location.pathname !== "/" && (
+            <button
+              className="btn btn-secondary"
+              onClick={() => setShowAddForm(true)}
+            >
+              Add Item
+            </button>
+          )}
         </>
       ) : (
         <>
