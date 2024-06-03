@@ -1724,7 +1724,64 @@ label form [type='radio'] {
   background-color: #f97316;
   background-color: #0891b2;
   border: none;
-  drop-shadow: 5px 5px 5px #d3d3d3);
+  drop-shadow: 5px 5px 5px #d3d3d3;
   padding: 10px;
   
+}
+
+.a.view-all{
+color: #f97316
+}
+
+.view-all:hover{
+  
+}
+
+.scheduled-workouts{
+  background-color: #ffffff;
+  box-shadow: 3px 3px 3px darkgray;
+  padding: 20px;
+  border: 2px solid #d3d3d3 !important;
+  border-radius: 10px;
+  margin-top:20px;
+  
+}
+.todays-workouts{
+  background-color: #ffffff;
+  box-shadow: 3px 3px 3px darkgray;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 10px;
+  border: 2px solid #d3d3d3 !important;
+  margin-top:20px;
+  
+}
+
+.completed-workouts{
+  background-color: #ffffff;
+  box-shadow: 3px 3px 3px darkgray;
+  padding-top: 5px;
+  padding-bottom: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 10px;
+  border: 2px solid #d3d3d3 !important;
+  margin-top:20px;
+
+}
+
+.summer-challenge{
+  background-color: #ffffff;
+  box-shadow: 3px 3px 3px darkgray;
+  padding-top: 5px;
+  padding-bottom: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 10px;
+  border: 2px solid #d3d3d3 !important;
+  margin-top:20px;
+
+
 }

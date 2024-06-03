@@ -155,7 +155,7 @@ const DietList = () => {
 
                 <div className="col">
                   {location.pathname !== "/diet" && (
-                    <Link to="/diet">View All</Link>
+                    <Link to="view-all /diet">View All</Link>
                   )}
                 </div>
                 {data?.diets.filter((diet) => !diet.completed).length === 0 ? (

@@ -151,6 +151,9 @@ const WorkoutList = ({ selectedDate }) => {
             </>
           ) : (
             <>
+
+            <div className="todays-workouts">
+            
               <h3>Today's Workouts</h3>
               {todayWorkouts.filter((workout) => !workout.completed).length ===
               0 ? (
@@ -197,6 +200,8 @@ const WorkoutList = ({ selectedDate }) => {
                 >
                   Add a Workout
                 </button>
+
+              </div>
 
                 {showForm && (
                   <>
@@ -249,6 +254,10 @@ const WorkoutList = ({ selectedDate }) => {
                     </div>
                   </>
                 )}
+
+</div>
+
+            <div className="scheduled-workouts">
                 <h3>My Scheduled Workouts</h3>
 
                 {data?.workouts &&
@@ -287,7 +296,9 @@ const WorkoutList = ({ selectedDate }) => {
                         </h4>
                       </div>
                     ))}
+                    </div>
 
+              <div className="completed-workouts">
                 <h3 className="mt-4">Completed Workouts</h3>
                 <div className="card border rounded ">
                   {data?.workouts
@@ -312,8 +323,11 @@ const WorkoutList = ({ selectedDate }) => {
                         </h4>
                       </div>
                     ))}
+                    </div>
                 </div>
                 <div>
+
+                <div className="summer-challenge">
                   <h4 className="mt-4">Summer Challenge 2024</h4>
                   <p>
                     Complete the Summer Challenge and gain 100 Progress Points
@@ -356,6 +370,7 @@ const WorkoutList = ({ selectedDate }) => {
                   </div>
                 </div>
               </div>
+              
             </>
           )}
         </>
