@@ -307,7 +307,7 @@ const DietList = () => {
           {data?.diets &&
             data?.diets.map((diet) => (
               <div key={diet._id} className="card mb-3">
-                <h4 className="card-header bg-light text-dark p-2 m-0">
+                <h4 className="card-header text-dark p-2 m-0">
                   <div className="row">
                     <div className="col">{diet.food}</div>
                     <div className="col">{diet.calories} cal</div>
