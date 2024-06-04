@@ -347,7 +347,7 @@ const ProgressList = () => {
               .filter((goal) => !goal.completed)
               .map((goal) => (
                 <div key={goal._id} className="card mb-3">
-                  <h4 className="card-header bg-light text-dark p-2 m-0">
+                  <h4 className="card-header  text-dark p-2 m-0">
                     <div className="row">
                       <div className="col">{goal.goal}</div>
 

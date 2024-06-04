@@ -206,7 +206,7 @@ const WorkoutList = ({ selectedDate }) => {
                 {showForm && (
                   <>
                     <div className="card mb-3">
-                      <h4 className="card-header text-dark p-2 m-0">
+                      <h4 className="card-header bg-light text-dark p-2 m-0">
                         <form onSubmit={handleFormSubmit}>
                           <div className="row">
                             <div className="col">
@@ -393,7 +393,7 @@ const WorkoutList = ({ selectedDate }) => {
               .filter((workout) => !workout.completed)
               .map((workout) => (
                 <div key={workout._id} className="card mb-3">
-                  <h4 className="card-header bg-light text-dark p-2 m-0">
+                  <h4 className="card-header text-dark p-2 m-0">
                     <div className="row">
                       <div className="col" style={{ fontSize: "15px" }}>
                         {workout.dayofWeek}
